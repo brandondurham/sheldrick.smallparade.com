@@ -3,15 +3,24 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `sheldrick`,
-    siteUrl: `https://www.yourdomain.tld`
+    title: 'sheldrick',
+    siteUrl: 'https://www.yourdomain.tld',
   },
-  plugins: ["gatsby-plugin-styled-components", "gatsby-plugin-google-gtag", "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "images",
-      "path": "./src/images/"
+  plugins: [
+    'gatsby-plugin-styled-components',
+    {
+      resolve: 'gatsby-plugin-google-gtag',
+      options: {
+        trackingIds: ['G-HWE0FF8399'],
+      },
     },
-    __key: "images"
-  }]
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /src\/images/
+        },
+      },
+    },
+  ],
 };
