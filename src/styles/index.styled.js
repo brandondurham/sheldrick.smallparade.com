@@ -77,6 +77,10 @@ export const Header = styled.header`
 
   h2 { display: none; }
 
+  @media (${breakpoints.small}) and (height >= 400px) {
+    h2 { display: block; }
+  }
+
   @media (${breakpoints.small}) {
     grid-row: 1/-1;
     height: 100vh;
@@ -84,8 +88,6 @@ export const Header = styled.header`
     transform: scale(-1);
     width: 5rem;
     writing-mode: vertical-lr;
-
-    h2 { display: block; }
   }
 
   @media (${breakpoints.large}) {
@@ -158,7 +160,7 @@ export const MessageItems = styled.ul`
   column-gap: 0.5rem;
   display: flex;
   flex-wrap: wrap;
-  font-size: 4.6vw;
+  font-size: 4.5vw;
   font-weight: 600;
   line-height: var(--message-line-height);
   list-style: none;
@@ -168,7 +170,7 @@ export const MessageItems = styled.ul`
   @media (${breakpoints.small}) {
     --message-line-height: 1.3em;
     column-gap: 2rem;
-    font-size: 4.2vw;
+    font-size: 4.1vw;
   }
 
   @media (${breakpoints.large}) {
@@ -280,6 +282,7 @@ export const Article = styled.article`
 `;
 
 export const Picture = styled.picture`
+  display: none;
   inset: 0;
   pointer-events: none;
   position: fixed;
@@ -288,7 +291,8 @@ export const Picture = styled.picture`
   svg {
     aspect-ratio: 1/1;
     fill: none;
-    inset: auto 0 0 10vw;
+    /* inset: auto 0 0 10vw; */
+    inset: auto 0 0 50vw;
     max-width: 100vh;
     position: absolute;
     stroke: var(--color-lowlight);
@@ -302,10 +306,14 @@ export const Picture = styled.picture`
     }
   }
 
-  @media (${breakpoints.small}) {
+  /* @media (${breakpoints.small}) {
     svg {
       inset: auto 0 0 50vw;
     }
+  } */
+
+  @media (${breakpoints.medium}) {
+    display: block;
   }
 `;
 
