@@ -1,8 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import Sticky from 'react-stickynode';
-import Markdown from 'react-markdown';
 import Vivus from 'vivus';
-import rehypeRaw from 'rehype-raw';
 
 // Hooks
 import { useScrollSpy } from '../hooks/useScrollSpy';
@@ -119,7 +117,7 @@ const IndexPage = () => {
                   </Styled.Anchor>
                   <h3>{icon} {menu}</h3>
                 </Styled.ArticleHeader>
-                <Markdown rehypePlugins={[rehypeRaw]}>{content}</Markdown>
+                <div dangerouslySetInnerHTML={{ __html: content }} />
                 {
                   footnotes && footnotes.length > 0 && (
                     <Styled.Footer>
