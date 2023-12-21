@@ -3,6 +3,46 @@ import { createGlobalStyle } from 'styled-components';
 import { breakpoints } from './breakpoints';
 
 export default createGlobalStyle`
+  @font-face {
+    font-display: swap;
+    font-family: Decimal;
+    font-style: normal;
+    font-weight: 400;
+    src: url("/fonts/Decimal-Book-Pro.otf") format("opentype");
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: Decimal;
+    font-style: italic;
+    font-weight: 400;
+    src: url("/fonts/Decimal-BookItalic-Pro.otf") format("opentype");
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: Decimal;
+    font-style: normal;
+    font-weight: 600;
+    src: url("/fonts/Decimal-Semibold-Pro.otf") format("opentype");
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: Decimal;
+    font-style: italic;
+    font-weight: 600;
+    src: url("/fonts/Decimal-SemiboldItalic-Pro.otf") format("opentype");
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: "Whitney Index";
+    font-style: normal;
+    font-weight: 700;
+    src: url("/fonts/WhitneyIndWh-RdBol.otf") format("opentype");
+  }
+
   html {
     --nav-height: 7.5rem;
     --message-line-height: 1.8em;

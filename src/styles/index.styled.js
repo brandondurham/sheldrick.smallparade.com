@@ -235,8 +235,9 @@ export const Article = styled.article`
       &::before {
         content: counter(list);
         display: inline-block;
-        font-family: "Whitney Index White";
-        margin-right: 0.25em;
+        font-family: "Whitney Index";
+        font-weight: 700;
+        transform: translateY(0.08em);
       }
 
       strong {
