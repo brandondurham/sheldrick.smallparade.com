@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Element, Link } from 'react-scroll';
 
 import { breakpoints } from './breakpoints';
 
@@ -134,13 +135,18 @@ export const NavItem = styled.li`
   white-space: nowrap;
 `;
 
-export const NavLink = styled.a`
-  color: ${({ $isActive }) => $isActive ? 'rgb(23 23 22)' : 'inherit'};
-  text-decoration: ${({ $isActive }) => $isActive ? 'underline' : 'none'};
+export const NavLink = styled(Link)`
+  color: inherit;
+  text-decoration: none;
   text-underline-offset: 0.4em;
   transition: color 0.8s var(--transition-easing);
 
   &:hover {
+    color: rgb(23 23 22);
+    text-decoration: underline;
+  }
+
+  &.active {
     color: rgb(23 23 22);
     text-decoration: underline;
   }
@@ -208,7 +214,7 @@ export const Asterisk = styled.span`
   color: var(--color-lowlight);
 `;
 
-export const Panel = styled.section`
+export const Panel = styled(Element)`
   align-items: start;
   column-gap: 1vw;
   counter-reset: footnotes;
@@ -219,7 +225,7 @@ export const Panel = styled.section`
   &:last-of-type { padding-bottom: 50vh; }
 
   @media (${breakpoints.large}) {
-    padding-bottom: 20vh;
+    padding-bottom: 10rem;
     &:last-of-type { padding-bottom: 30vh; }
   }
 

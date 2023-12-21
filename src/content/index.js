@@ -70,15 +70,7 @@ const Content = [
   },
   {
     anchor: 'hooray',
-    content: `Need more? In 2023 Jonathan Hoefler wrote the following about me and my time as _Senior Software Engineer/Designer_ at his company, <a href="https://www.typography.com/" target="_blank">Hoefler&Co</a>:
-
-> “Brandon’s an outstandingly talented developer, a thoughtful and constructive collaborator, ten times the designer that he thinks he is, and just one of my favorite people. I count myself immensely fortunate that his sensitivity to typography brought him to Hoefler&Co where I had the pleasure of working with him for eight of my company’s most energetic years, and I’m happy to call him a friend.
->
-> Over these years, Brandon was instrumental in the design and development of not only typography.com, which underwent both evolutionary and revolutionary changes, but also the award-winning and influential [Discover.typography](https://discover.typography.com), which raised the bar for typography in the browser. Brandon took the reins of our <small>saas</small> product [Cloud.typography](https://cloud.typography.com), and was an absolutely critical part of my team that was charged with creating an elegant front-end to conceal the massively complex set of decisions required of a sophisticated font library. Behind the scenes, Brandon dealt smartly and confidently with the demanding back-end integrations of two different content management systems, a best-of-breed <small>CDN</small>, and a sophisticated internal <small>CRM</small> that he designed while tackling the public-facing websites at the same time. I was always grateful for not only Brandon’s talents and energies but his ideas and opinions, his honesty, his good humor, his eagerness to simultaneously explore new technologies while committing to time-tested ones, his patience with the limited resources of an established company (bootstrapped, profitable, old-school), and his camaraderie with a diverse group of colleagues. I know him to have been both a generous collaborator and a good friend to the many designers, developers, engineers, managers, and typeface designers he worked with at H&Co, and I’d recommend him without hesitation to absolutely anyone with the good fortune to be considering him for a project.”
->
-> — Jonathan Hoefler
-
-If desired I can share Jonathan’s contact information for a referral along with a few other coleagues, managers, agencies, and clients I’ve worked with.<p>Need more? In 2023 Jonathan Hoefler wrote the following about me and my time as <em>Senior Software Engineer/Designer</em> at his company, <a href="https://www.typography.com/" target="_blank">Hoefler&amp;Co</a>:</p>
+    content: `Need more? In 2023 Jonathan Hoefler wrote the following about me and my time as <em>Senior Software Engineer/Designer</em> at his company, <a href="https://www.typography.com/" target="_blank">Hoefler&Co</a>:
 <blockquote>
 <p>“Brandon’s an outstandingly talented developer, a thoughtful and constructive collaborator, ten times the designer that he thinks he is, and just one of my favorite people. I count myself immensely fortunate that his sensitivity to typography brought him to Hoefler&amp;Co where I had the pleasure of working with him for eight of my company’s most energetic years, and I’m happy to call him a friend.</p>
 <p>Over these years, Brandon was instrumental in the design and development of not only typography.com, which underwent both evolutionary and revolutionary changes, but also the award-winning and influential <a href="https://discover.typography.com">Discover.typography</a>, which raised the bar for typography in the browser. Brandon took the reins of our <small>saas</small> product <a href="https://cloud.typography.com">Cloud.typography</a>, and was an absolutely critical part of my team that was charged with creating an elegant front-end to conceal the massively complex set of decisions required of a sophisticated font library. Behind the scenes, Brandon dealt smartly and confidently with the demanding back-end integrations of two different content management systems, a best-of-breed <small>CDN</small>, and a sophisticated internal <small>CRM</small> that he designed while tackling the public-facing websites at the same time. I was always grateful for not only Brandon’s talents and energies but his ideas and opinions, his honesty, his good humor, his eagerness to simultaneously explore new technologies while committing to time-tested ones, his patience with the limited resources of an established company (bootstrapped, profitable, old-school), and his camaraderie with a diverse group of colleagues. I know him to have been both a generous collaborator and a good friend to the many designers, developers, engineers, managers, and typeface designers he worked with at H&amp;Co, and I’d recommend him without hesitation to absolutely anyone with the good fortune to be considering him for a project.”</p>
@@ -102,9 +94,9 @@ If desired I can share Jonathan’s contact information for a referral along wit
 <p>No matter what happens I understand this is quite the long shot. I just couldn’t pass up the opportunity to throw my name in the hat, even if it’s entirely probable that there isn’t actually a hat to throw it into. :)</p>
 <p>Thank you for your time and consideration. I hope to hear from you soon!</p>
 <div class="signature">
-  <img src="/signature.png" />
-  <span>Brandon Durham</span>
-  <span>December 21, 2023</span>
+<img src="/signature.png" />
+<span>Brandon Durham</span>
+<span>December 21, 2023</span>
 </div>`,
     icon: '💬',
     image: 'elephant-e',

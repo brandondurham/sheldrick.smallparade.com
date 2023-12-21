@@ -3,9 +3,6 @@ import Sticky from 'react-stickynode';
 import Vivus from 'vivus';
 import FontFaceObserver from 'fontfaceobserver';
 
-// Hooks
-import { useScrollSpy } from '../hooks/useScrollSpy';
-
 // Images
 import ElephantA from '../images/elephant_a-1.svg';
 import ElephantB from '../images/elephant_a-2.svg';
@@ -32,15 +29,11 @@ const IndexPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const pictures = useRef({});
   
-  const ids = Content.map(({ anchor }) => anchor);
-  const activeId = useScrollSpy(ids, 120);
-  
+  // Fonts
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      // Fonts
       const fontDecimal = new FontFaceObserver('Decimal');
       const fontWhitneyIndex = new FontFaceObserver('Whitney Index');
-      
       Promise.all([fontDecimal.load(), fontWhitneyIndex.load()]).then(() => {
         setIsLoaded(true);
       });
@@ -90,9 +83,20 @@ const IndexPage = () => {
       <Styled.Nav id="navigation">
         <Styled.NavItems>
           {
-            Content.map(({ anchor, menu }, index) => (
+            Content.map(({ anchor, menu }) => (
               <Styled.NavItem key={anchor}>
-                <Styled.NavLink $isActive={activeId === anchor} href={`#${anchor}`}>{menu}</Styled.NavLink>
+                <Styled.NavLink
+                  smooth
+                  spy
+                  activeClass="active"
+                  delay={0}
+                  duration={1000}
+                  href={`#${anchor}`}
+                  offset={-140}
+                  to={anchor}
+                >
+                  {menu}
+                </Styled.NavLink>
               </Styled.NavItem>
             ))
           }
@@ -124,7 +128,7 @@ const IndexPage = () => {
         </Styled.Landing>
         {
           Content.map(({ anchor, content, footnotes, icon, menu }) => (
-            <Styled.Panel id={anchor} key={anchor}>
+            <Styled.Panel className="element" id={anchor} name={anchor} key={anchor}>
               <Styled.Article>
                 <Sticky onStateChange={(status) => handleStateChange(status, anchor)} top={160} />
                 <Styled.ArticleHeader>

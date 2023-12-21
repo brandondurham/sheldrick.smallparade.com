@@ -8,7 +8,7 @@ export default createGlobalStyle`
     font-family: Decimal;
     font-style: normal;
     font-weight: 400;
-    src: url("/fonts/Decimal-Book-Pro.otf") format("opentype");
+    src: url("/fonts/Decimal-Book-Pro.woff2") format("woff2");
   }
 
   @font-face {
@@ -16,7 +16,7 @@ export default createGlobalStyle`
     font-family: Decimal;
     font-style: italic;
     font-weight: 400;
-    src: url("/fonts/Decimal-BookItalic-Pro.otf") format("opentype");
+    src: url("/fonts/Decimal-BookItalic-Pro.woff2") format("woff2");
   }
 
   @font-face {
@@ -24,7 +24,7 @@ export default createGlobalStyle`
     font-family: Decimal;
     font-style: normal;
     font-weight: 600;
-    src: url("/fonts/Decimal-Semibold-Pro.otf") format("opentype");
+    src: url("/fonts/Decimal-Semibold-Pro.woff2") format("woff2");
   }
 
   @font-face {
@@ -32,7 +32,7 @@ export default createGlobalStyle`
     font-family: Decimal;
     font-style: italic;
     font-weight: 600;
-    src: url("/fonts/Decimal-SemiboldItalic-Pro.otf") format("opentype");
+    src: url("/fonts/Decimal-SemiboldItalic-Pro.woff2") format("woff2");
   }
 
   @font-face {
@@ -40,7 +40,7 @@ export default createGlobalStyle`
     font-family: "Whitney Index";
     font-style: normal;
     font-weight: 700;
-    src: url("/fonts/WhitneyIndWh-RdBol.otf") format("opentype");
+    src: url("/fonts/WhitneyIndWh-RdBol.woff2") format("woff2");
   }
 
   html {
@@ -56,13 +56,11 @@ export default createGlobalStyle`
     --color-lowlight: rgb(151 142 129);
 
     color: var(--color-default);
-    font-family: Decimal, "Ringside Regular SSm", Decimal, sans-serif;
+    font-family: Decimal, sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.5;
     -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
-    scroll-padding-top: calc(var(--nav-height) - 10px);
   }
   
   body {
@@ -74,8 +72,8 @@ export default createGlobalStyle`
   * { box-sizing: border-box; }
 
   p {
-    margin: 1em 0;
-    &:first-of-type { margin-top: 0;}
+    margin: 0;
+    & + p { text-indent: 3ch; }
   }
 
   a {
@@ -95,6 +93,8 @@ export default createGlobalStyle`
   ol, ul {
     margin: 0;
     padding: 0;
+
+    p + & { margin: 1em 0; }
   }
 
   [aria-describedby="footnote-label"] {
@@ -192,7 +192,7 @@ export default createGlobalStyle`
     display: flex;
     flex-direction: column;
     font-size: inherit;
-    margin-top: 6em;
+    margin: 2em 0;
     
     img {
       display: block;
