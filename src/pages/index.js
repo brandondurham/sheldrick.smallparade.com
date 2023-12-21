@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Sticky from 'react-stickynode';
 import Vivus from 'vivus';
+import FontFaceObserver from 'fontfaceobserver';
 
 // Hooks
 import { useScrollSpy } from '../hooks/useScrollSpy';
@@ -20,6 +21,10 @@ import * as Styled from '../styles/index.styled.js';
 // Content
 import Content from '../content';
 
+// Fonts
+const fontDecimal = new FontFaceObserver('Decimal');
+const fontWhitneyIndex = new FontFaceObserver('Whitney Index');
+
 // Universal animation options for the Vivus package.
 const animationOptions = {
   animTimingFunction: Vivus.EASE_OUT,
@@ -33,6 +38,12 @@ const IndexPage = () => {
 
   const ids = Content.map(({ anchor }) => anchor);
   const activeId = useScrollSpy(ids, 120);
+
+  useEffect(() => {
+    Promise.all([fontDecimal.load(), fontWhitneyIndex.load()]).then(() => {
+      setIsLoaded(true);
+    });
+  }, []);
 
   // Once this page loads let’s set up the Vivus animations for each 
   useEffect(() => {
@@ -55,24 +66,6 @@ const IndexPage = () => {
       }
     }
   };
-
-  useEffect(() => {
-    let success = undefined;
-    if ('fonts' in document) {
-      Promise.all([
-        document.fonts.load('400 1em Decimal'),
-        document.fonts.load('italic 400 1em Decimal'),
-        document.fonts.load('600 1em Decimal'),
-        document.fonts.load('italic 600 1em Decimal'),
-        document.fonts.load('700 1em "Whitney Index"'),
-      ]).then(() => {
-        success = setTimeout(() => setIsLoaded(true), 100);
-      });
-    }
-    return () => {
-      if (success) clearTimeout(success);
-    }
-  }, []);
 
   return (
     <Styled.Wrapper>

@@ -8,7 +8,7 @@ export const Overlay = styled.div`
   opacity: ${({ $isLoaded }) => $isLoaded ? 0 : 1};
   pointer-events: none;
   position: fixed;
-  transition: opacity 0.8s var(--transition-easing);
+  transition: opacity 0.8s var(--transition-easing) 100ms;
   z-index: 100;
 `;
 
