@@ -21,10 +21,6 @@ import * as Styled from '../styles/index.styled.js';
 // Content
 import Content from '../content';
 
-// Fonts
-const fontDecimal = new FontFaceObserver('Decimal');
-const fontWhitneyIndex = new FontFaceObserver('Whitney Index');
-
 // Universal animation options for the Vivus package.
 const animationOptions = {
   animTimingFunction: Vivus.EASE_OUT,
@@ -40,9 +36,17 @@ const IndexPage = () => {
   const activeId = useScrollSpy(ids, 120);
 
   useEffect(() => {
-    Promise.all([fontDecimal.load(), fontWhitneyIndex.load()]).then(() => {
+    if (typeof window !== 'undefined') {
+      // Fonts
+      const fontDecimal = new FontFaceObserver('Decimal');
+      const fontWhitneyIndex = new FontFaceObserver('Whitney Index');
+
+      Promise.all([fontDecimal.load(), fontWhitneyIndex.load()]).then(() => {
+        setIsLoaded(true);
+      });
+    } else {
       setIsLoaded(true);
-    });
+    }
   }, []);
 
   // Once this page loads let’s set up the Vivus animations for each 
