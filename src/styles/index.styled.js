@@ -2,6 +2,16 @@ import styled from 'styled-components';
 
 import { breakpoints } from './breakpoints';
 
+export const Overlay = styled.div`
+  background-color: var(--color-body-background);
+  inset: 0;
+  opacity: ${({ $isLoaded }) => $isLoaded ? 0 : 1};
+  pointer-events: none;
+  position: fixed;
+  transition: opacity 0.8s var(--transition-easing);
+  z-index: 100;
+`;
+
 export const Wrapper = styled.div`
   --content-x-padding: 2rem;
 

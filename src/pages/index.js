@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Sticky from 'react-stickynode';
 import Vivus from 'vivus';
 
@@ -28,6 +28,7 @@ const animationOptions = {
 };
 
 const IndexPage = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
   const pictures = useRef({});
 
   const ids = Content.map(({ anchor }) => anchor);
@@ -55,9 +56,28 @@ const IndexPage = () => {
     }
   };
 
+  useEffect(() => {
+    let success = undefined;
+    if ('fonts' in document) {
+      Promise.all([
+        document.fonts.load('400 1em Decimal'),
+        document.fonts.load('italic 400 1em Decimal'),
+        document.fonts.load('600 1em Decimal'),
+        document.fonts.load('italic 600 1em Decimal'),
+        document.fonts.load('700 1em "Whitney Index"'),
+      ]).then(() => {
+        success = setTimeout(() => setIsLoaded(true), 100);
+      });
+    }
+    return () => {
+      if (success) clearTimeout(success);
+    }
+  }, []);
+
   return (
     <Styled.Wrapper>
       <GlobalStyle />
+      <Styled.Overlay $isLoaded={isLoaded} />
       <Styled.Picture>
         <ElephantA id="elephant-a" />
         <ElephantB id="elephant-b" />
