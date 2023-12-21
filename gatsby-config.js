@@ -8,6 +8,7 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-styled-components',
+    'gatsby-plugin-preload-fonts',
     {
       resolve: 'gatsby-plugin-google-gtag',
       options: {

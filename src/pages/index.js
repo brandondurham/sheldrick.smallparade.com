@@ -31,16 +31,16 @@ const animationOptions = {
 const IndexPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const pictures = useRef({});
-
+  
   const ids = Content.map(({ anchor }) => anchor);
   const activeId = useScrollSpy(ids, 120);
-
+  
   useEffect(() => {
     if (typeof window !== 'undefined') {
       // Fonts
       const fontDecimal = new FontFaceObserver('Decimal');
       const fontWhitneyIndex = new FontFaceObserver('Whitney Index');
-
+      
       Promise.all([fontDecimal.load(), fontWhitneyIndex.load()]).then(() => {
         setIsLoaded(true);
       });
