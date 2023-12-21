@@ -44,8 +44,8 @@ export default createGlobalStyle`
   }
 
   html {
-    --nav-height: 7.5rem;
-    --message-line-height: 1.8em;
+    --nav-height: 5rem;
+    --message-line-height: 1.6em;
     --transition-easing: cubic-bezier(0.16, 1, 0.3, 1);
     --article-width: 100%;
 

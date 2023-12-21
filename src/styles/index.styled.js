@@ -63,7 +63,7 @@ export const Header = styled.header`
   background-color: var(--color-body-background);
   box-shadow: -1px 0 0 rgb(151 142 129/0.5);
   display: flex;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   justify-content: space-between;
   padding: 1rem;
   position: sticky;
@@ -97,10 +97,8 @@ export const Header = styled.header`
 
 export const Nav = styled.nav`
   align-items: center;
-  backdrop-filter: blur(10px);
   display: none;
   font-size: 0.75rem;
-  line-height: 1.8;
   min-height: var(--nav-height);
   padding: 18px;
   position: sticky;
@@ -111,7 +109,7 @@ export const Nav = styled.nav`
     background-color: var(--color-body-background);
     content: "";
     inset: 0;
-    opacity: 0.9;
+    opacity: 0.98;
     position: absolute;
     z-index: -1;
   }
@@ -120,6 +118,10 @@ export const Nav = styled.nav`
     display: flex;
     font-size: 0.9rem;
     padding: 0 var(--content-x-padding);
+  }
+
+  @media (${breakpoints.medium}) {
+    --nav-height: 7.5rem;
   }
 `;
 
@@ -160,7 +162,7 @@ export const MessageItems = styled.ul`
   column-gap: 0.5rem;
   display: flex;
   flex-wrap: wrap;
-  font-size: 4.5vw;
+  font-size: 4.3vw;
   font-weight: 600;
   line-height: var(--message-line-height);
   list-style: none;
@@ -170,7 +172,7 @@ export const MessageItems = styled.ul`
   @media (${breakpoints.small}) {
     --message-line-height: 1.3em;
     column-gap: 2rem;
-    font-size: 4.1vw;
+    font-size: 3.8vw;
   }
 
   @media (${breakpoints.large}) {
@@ -291,12 +293,11 @@ export const Picture = styled.picture`
   svg {
     aspect-ratio: 1/1;
     fill: none;
-    /* inset: auto 0 0 10vw; */
     inset: auto 0 0 50vw;
     max-width: 100vh;
     position: absolute;
     stroke: var(--color-lowlight);
-    stroke-width: 5px;
+    stroke-width: 10px;
 
     &#horizon {
       aspect-ratio: auto;
@@ -305,12 +306,6 @@ export const Picture = styled.picture`
       stroke-width: 3px;
     }
   }
-
-  /* @media (${breakpoints.small}) {
-    svg {
-      inset: auto 0 0 50vw;
-    }
-  } */
 
   @media (${breakpoints.medium}) {
     display: block;

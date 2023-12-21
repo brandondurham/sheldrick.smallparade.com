@@ -10,7 +10,7 @@
   "scripts": {
     "build": "gatsby build",
     "clean": "gatsby clean",
-    "develop": "gatsby develop",
+    "develop": "gatsby develop -H 0.0.0.0",
     "preload-fonts": "gatsby-preload-fonts --no-sandbox",
     "serve": "gatsby serve",
     "start": "gatsby develop"

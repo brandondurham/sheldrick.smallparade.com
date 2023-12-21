@@ -127,7 +127,7 @@ const IndexPage = () => {
           </Styled.Message>
         </Styled.Landing>
         {
-          Content.map(({ anchor, content, footnotes, icon, menu }) => (
+          Content.map(({ anchor, content, footnotes, menu }, index) => (
             <Styled.Panel className="element" id={anchor} name={anchor} key={anchor}>
               <Styled.Article>
                 <Sticky onStateChange={(status) => handleStateChange(status, anchor)} top={160} />
@@ -136,7 +136,7 @@ const IndexPage = () => {
                     <span aria-hidden="true">§</span>
                     <span className="visually-hidden">Section titled “{menu}”</span>
                   </Styled.Anchor>
-                  <h3>{icon} {menu}</h3>
+                  <h3>{index + 1}. {menu}</h3>
                 </Styled.ArticleHeader>
                 <div dangerouslySetInnerHTML={{ __html: content }} />
                 {
@@ -167,4 +167,12 @@ const IndexPage = () => {
 }
 
 export default IndexPage;
-export const Head = () => <title>Brandon Durham ❤️ Sheldrick Wildlife Trust</title>;
+export const Head = () => (
+  <>
+    <meta property="og:image" content="https://sheldrick.smallparade.com/social.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:totle" content="Brandon Durham ❤️ Sheldrick Wildlife Trust" />
+    <title>Brandon Durham ❤️ Sheldrick Wildlife Trust</title>
+  </>
+);
