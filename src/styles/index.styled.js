@@ -295,7 +295,7 @@ export const Picture = styled.picture`
     max-width: 100vh;
     position: absolute;
     stroke: var(--color-lowlight);
-    stroke-width: 10px;
+    stroke-width: 5px;
 
     &#horizon {
       aspect-ratio: auto;
