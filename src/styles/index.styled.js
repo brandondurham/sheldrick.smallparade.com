@@ -226,8 +226,6 @@ export const Panel = styled(Element)`
   min-height: 100vh;
   padding-bottom: 4rem;
 
-  &:last-of-type { padding-bottom: 50vh; }
-
   @media (${breakpoints.large}) {
     padding-bottom: 10rem;
     &:last-of-type { padding-bottom: 30vh; }
@@ -361,4 +359,43 @@ export const Anchor = styled.a`
   ${ArticleHeader}:hover & {
     opacity: 1;
   }
+`;
+
+export const Photo = styled.figure`
+  background-color: rgb(23 23 23);
+  /* background-color: white; */
+  box-shadow:
+    0 2px 2px hsl(0deg 0% 0% / 0.123),
+    0 4px 4px hsl(0deg 0% 0% / 0.123),
+    0 8px 8px hsl(0deg 0% 0% / 0.123),
+    0 16px 16px hsl(0deg 0% 0% / 0.123),
+    0 32px 32px hsl(0deg 0% 0% / 0.123);
+  margin: 0;
+  max-width: 500px;
+  padding: 18px;
+  position: relative;
+  transform: rotate(-2deg);
+
+  img {
+    display: block;
+    width: 100%;
+  }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+    }
+
+    &::before {
+      background-image: linear-gradient(to bottom right, #d38d2c, #5d74ca);
+      inset: 0;
+      z-index: -2;
+    }
+
+    &::after {
+      background-color: var(--color-body-background);
+      inset: 18px;
+      z-index: -1;
+    }
 `;
