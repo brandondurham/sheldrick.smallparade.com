@@ -149,7 +149,7 @@ const IndexPage = () => {
                             <li key={id} id={id}>
                               {content}
                               {' '}
-                              <a href={`#${id}-ref`} aria-label="Back to content">↩</a>
+                              <a href={`#${id}-ref`} aria-label="Back to content">⎌</a>
                             </li>
                           ))
                         }
