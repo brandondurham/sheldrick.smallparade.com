@@ -156,6 +156,7 @@ export const NavItems = styled.ol`
 
 export const NavItem = styled.li`
   overflow: hidden;
+  padding: 2px 0;
   text-overflow: ellipsis;
   white-space: nowrap;
 `;
