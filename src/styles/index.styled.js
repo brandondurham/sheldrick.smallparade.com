@@ -328,7 +328,6 @@ export const Picture = styled.picture`
   svg {
     aspect-ratio: 1/1;
     fill: none;
-    max-width: min(100vh, 100vw);
     position: absolute;
     stroke: var(--color-lowlight);
     stroke-width: 10px;
@@ -359,6 +358,7 @@ export const Picture = styled.picture`
 
     svg {
       inset: auto 0 0 50vw;
+      max-width: min(100vh, 100vw);
       &#horizon { inset: auto 0 4%; }
     }
   }
