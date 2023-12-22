@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Sticky from 'react-stickynode';
 import Vivus from 'vivus';
 import FontFaceObserver from 'fontfaceobserver';
@@ -15,6 +15,9 @@ import Horizon from '../images/horizon.svg';
 import GlobalStyle from '../styles/global.styled.js';
 import * as Styled from '../styles/index.styled.js';
 
+// Hooks
+import { useBreakpoints } from '../hooks/useBreakpoints';
+
 // Content
 import Content from '../content';
 
@@ -28,7 +31,10 @@ const animationOptions = {
 const IndexPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const pictures = useRef({});
-  
+
+  // Track breakpoint state.
+  const { matches } = useBreakpoints();
+
   // Fonts
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -48,34 +54,33 @@ const IndexPage = () => {
       pictures.current[anchor] = new Vivus(image, animationOptions);
     });
     pictures.current.horizon = new Vivus('horizon', animationOptions);
-  }, []);
+    if (!matches.medium) {
+      Object.keys(pictures.current).forEach((picture) => {
+        pictures.current[picture].play();
+      });
+    }
+  }, [matches]);
 
-  const handleStateChange = (status, anchor) => {
-    if ([Sticky.STATUS_FIXED, Sticky.STATUS_RELEASED].includes(status.status)) {
-      pictures.current[anchor] && pictures.current[anchor].play();
-      if (anchor === 'contact') {
-        pictures.current.horizon.play();
-      }
-    } else if (status.status === Sticky.STATUS_ORIGINAL) {
-      pictures.current[anchor] && pictures.current[anchor].play(-1);
-      if (anchor === 'contact') {
-        pictures.current.horizon.play(-1);
+  const handleStateChange = useCallback((status, anchor) => {
+    if (matches.medium) {
+      if ([Sticky.STATUS_FIXED, Sticky.STATUS_RELEASED].includes(status.status)) {
+        pictures.current[anchor] && pictures.current[anchor].play();
+        if (anchor === 'contact') {
+          pictures.current.horizon.play();
+        }
+      } else if (status.status === Sticky.STATUS_ORIGINAL) {
+        pictures.current[anchor] && pictures.current[anchor].play(-1);
+        if (anchor === 'contact') {
+          pictures.current.horizon.play(-1);
+        }
       }
     }
-  };
+  }, [matches]);
 
   return (
     <Styled.Wrapper>
       <GlobalStyle />
       <Styled.Overlay $isLoaded={isLoaded} />
-      <Styled.Picture>
-        <ElephantA id="elephant-a" />
-        <ElephantB id="elephant-b" />
-        <ElephantC id="elephant-c" />
-        <ElephantD id="elephant-d" />
-        <ElephantE id="elephant-e" />
-        <Horizon id="horizon" />
-      </Styled.Picture>
       <Styled.Header>
         <h1><span aria-hidden>●</span> Brandon Durham, Web Developer/Designer</h1>
         <h2><span aria-hidden>●</span> 18+ years experience</h2>
@@ -135,6 +140,14 @@ const IndexPage = () => {
             </Styled.MessageItems>
           </Styled.Message>
         </Styled.Landing>
+        <Styled.Picture>
+          <ElephantA id="elephant-a" />
+          <ElephantB id="elephant-b" />
+          <ElephantC id="elephant-c" />
+          <ElephantD id="elephant-d" />
+          <ElephantE id="elephant-e" />
+          <Horizon id="horizon" />
+        </Styled.Picture>
         {
           Content.map(({ anchor, content, footnotes, menu }, index) => (
             <Styled.Panel className="element" id={anchor} name={anchor} key={anchor}>

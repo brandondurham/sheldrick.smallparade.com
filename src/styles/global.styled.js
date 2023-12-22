@@ -55,6 +55,10 @@ export default createGlobalStyle`
     --color-highlight: rgb(211 141 44);
     --color-lowlight: rgb(151 142 129);
 
+    /* Header */
+    --header-height-small: 54px;
+    --header-height-large: 100vh;
+
     color: var(--color-default);
     font-family: Decimal, sans-serif;
     font-size: 16px;
@@ -72,8 +76,8 @@ export default createGlobalStyle`
   * { box-sizing: border-box; }
 
   p {
-    margin: 0;
-    & + p { text-indent: 3ch; }
+    margin: 0.75em 0 0;
+    &:first-of-type { margin: 0; }
   }
 
   a {
@@ -141,7 +145,7 @@ export default createGlobalStyle`
 
   blockquote {
     font-size: 0.85rem;
-    margin: 3rem 0;
+    margin: 2em 0;
     padding: 2rem;
     position: relative;
 
@@ -176,6 +180,7 @@ export default createGlobalStyle`
 
     @media (${breakpoints.small}) {
       font-size: 1rem;
+      margin: 3rem 0;
       padding: 4rem;
 
       &::after { inset: 1rem; }

@@ -14,7 +14,7 @@ export const Overlay = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  --content-x-padding: 2rem;
+  --content-x-padding: 24px;
 
   display: grid;
   grid-template-columns: 1fr;
@@ -50,25 +50,38 @@ export const Main = styled.main`
 export const Landing = styled.section`
   align-items: center;
   display: flex;
-  min-height: 80vh;
+  padding-top: 18px;
 
   @media (${breakpoints.small}) {
+    padding-top: 1rem;
+  }
+
+  @media (${breakpoints.medium}) {
     min-height: calc(100vh - var(--nav-height));
-    padding-bottom: var(--nav-height);
+    padding: 0 0 var(--nav-height);
   }
 `;
 
 export const Header = styled.header`
   align-items: center;
-  background-color: var(--color-body-background);
-  box-shadow: -1px 0 0 rgb(151 142 129/0.5);
+  box-shadow: 0 1px 0 rgb(151 142 129/0.25);
   display: flex;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
+  height: var(--header-height-small);
   justify-content: space-between;
-  padding: 1rem;
+  padding: 0 var(--content-x-padding);
   position: sticky;
   top: 0;
   z-index: 3;
+
+  &::before {
+    background-color: var(--color-body-background);
+    content: "";
+    inset: 0;
+    opacity: 0.98;
+    position: absolute;
+    z-index: -1;
+  }
 
   * {
     font: inherit;
@@ -82,8 +95,9 @@ export const Header = styled.header`
   }
 
   @media (${breakpoints.small}) {
+    box-shadow: -1px 0 0 rgb(151 142 129/0.5);
     grid-row: 1/-1;
-    height: 100vh;
+    height: var(--header-height-large);
     padding: 2rem 0;
     transform: scale(-1);
     width: 5rem;
@@ -97,12 +111,12 @@ export const Header = styled.header`
 
 export const Nav = styled.nav`
   align-items: center;
-  display: none;
+  box-shadow: 0 1px 0 rgb(151 142 129/0.25);
   font-size: 0.75rem;
-  min-height: var(--nav-height);
-  padding: 18px;
+  min-height:  var(--nav-height);
+  padding: 18px var(--content-x-padding);
   position: sticky;
-  top: 0;
+  top: var(--header-height-small);
   z-index: 2;
 
   &::before {
@@ -115,12 +129,14 @@ export const Nav = styled.nav`
   }
 
   @media (${breakpoints.small}) {
+    box-shadow: none;
     display: flex;
     font-size: 0.9rem;
     padding: 0 var(--content-x-padding);
+    top: 0;
   }
 
-  @media (${breakpoints.medium}) {
+  @media (${breakpoints.small}) {
     --nav-height: 7.5rem;
   }
 `;
@@ -131,6 +147,11 @@ export const NavItems = styled.ol`
   display: flex;
   flex-wrap: wrap;
   list-style-position: inside;
+  row-gap: 6px;
+
+  @media (${breakpoints.small}) {
+    row-gap: 3px;
+  }
 `;
 
 export const NavItem = styled.li`
@@ -156,29 +177,36 @@ export const NavLink = styled(Link)`
   }
 `;
 
-export const Message = styled.article``;
-
-export const MessageItems = styled.ul`
-  column-gap: 0.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  font-size: 4.3vw;
+export const Message = styled.article`
+  font-size: 4.7vw;
   font-weight: 600;
   line-height: var(--message-line-height);
-  list-style: none;
   text-transform: uppercase;
   transform: translate3d(-0.13em, 0, 0);
 
   @media (${breakpoints.small}) {
     --message-line-height: 1.3em;
-    column-gap: 2rem;
     font-size: 3.8vw;
   }
 
   @media (${breakpoints.large}) {
-    column-gap: 3rem;
     font-size: 3vw;
     font-weight: 400;
+  }
+`;
+
+export const MessageItems = styled.ul`
+  column-gap: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+
+  @media (${breakpoints.small}) {
+    column-gap: 2rem;
+  }
+
+  @media (${breakpoints.large}) {
+    column-gap: 3rem;
   }
 `;
 
@@ -223,8 +251,17 @@ export const Panel = styled(Element)`
   column-gap: 1vw;
   counter-reset: footnotes;
   display: flex;
-  min-height: 100vh;
-  padding-bottom: 4rem;
+  padding-bottom: 3rem;
+
+  &:last-of-type { padding-bottom: 10vh; }
+
+  @media (${breakpoints.small}) {
+    padding-bottom: 4rem;
+  }
+
+  @media (${breakpoints.medium}) {
+    &:last-of-type { padding-bottom: 20vh; }
+  }
 
   @media (${breakpoints.large}) {
     padding-bottom: 10rem;
@@ -282,31 +319,47 @@ export const Article = styled.article`
 `;
 
 export const Picture = styled.picture`
-  display: none;
-  inset: 0;
+  aspect-ratio: 1/1;
+  margin: 0 calc(var(--content-x-padding) * -1);
   pointer-events: none;
-  position: fixed;
-  z-index: -1;
+  position: relative;
 
   svg {
     aspect-ratio: 1/1;
     fill: none;
-    inset: auto 0 0 50vw;
-    max-width: 100vh;
+    max-width: min(100vh, 100vw);
     position: absolute;
     stroke: var(--color-lowlight);
-    stroke-width: 5px;
+    stroke-width: 10px;
 
     &#horizon {
       aspect-ratio: auto;
-      inset: auto 0 0;
-      max-width: 100vw;
-      stroke-width: 3px;
+      inset: auto 0 15%;
+      max-width: 100%;
+      stroke-width: 11px;
+      width: 100%;
+    }
+  }
+
+  @media (${breakpoints.small}) {
+    svg {
+      stroke-width: 5px;
+      &#horizon { stroke-width: 3px; }
     }
   }
 
   @media (${breakpoints.medium}) {
-    display: block;
+    aspect-ratio: auto;
+    inset: 0;
+    margin: 0;
+    pointer-events: none;
+    position: fixed;
+    z-index: -1;
+
+    svg {
+      inset: auto 0 0 50vw;
+      &#horizon { inset: auto 0 4%; }
+    }
   }
 `;
 
@@ -326,9 +379,9 @@ export const Footer = styled.footer`
   border-top: solid 1px var(--color-lowlight);
   color: var(--color-lowlight);
   font-size: 0.8rem;
-  line-height: 1.6;
-  margin-top: 4rem;
-  padding-top: 1.5rem;
+  line-height: 1.5;
+  margin-top: 2rem;
+  padding-top: 1rem;
 
   ol {
     display: flex;
@@ -340,6 +393,8 @@ export const Footer = styled.footer`
 
   @media (${breakpoints.small}) {
     font-size: 0.9rem;
+    line-height: 1.6;
+    padding-top: 1.5rem;
   }
 `;
 
@@ -363,15 +418,14 @@ export const Anchor = styled.a`
 
 export const Photo = styled.figure`
   background-color: rgb(23 23 23);
-  /* background-color: white; */
   box-shadow:
     0 2px 2px hsl(0deg 0% 0% / 0.123),
-    0 4px 4px hsl(0deg 0% 0% / 0.123),
-    0 8px 8px hsl(0deg 0% 0% / 0.123),
-    0 16px 16px hsl(0deg 0% 0% / 0.123),
-    0 32px 32px hsl(0deg 0% 0% / 0.123);
+    -1px 4px 4px hsl(0deg 0% 0% / 0.123),
+    -2px 8px 8px hsl(0deg 0% 0% / 0.123),
+    -4px 16px 16px hsl(0deg 0% 0% / 0.123),
+    -8px 32px 32px hsl(0deg 0% 0% / 0.123);
   margin: 0;
-  max-width: 500px;
+  max-width: 400px;
   padding: 18px;
   position: relative;
   transform: rotate(-2deg);
