@@ -109,7 +109,16 @@ const IndexPage = () => {
               {
                 Content.map(({ anchor, section, label }, index) => (
                   <Styled.MessageItem key={anchor}>
-                    <Styled.MessageLink href={`#${anchor}`}>
+                    <Styled.MessageLink
+                      smooth
+                      spy
+                      activeClass="active"
+                      delay={0}
+                      duration={1000}
+                      href={`#${anchor}`}
+                      offset={-140}
+                      to={anchor}
+                    >
                       <Styled.MessageText>
                         <Styled.MessageSlide>
                           <Styled.MessageDefault>{label}</Styled.MessageDefault>

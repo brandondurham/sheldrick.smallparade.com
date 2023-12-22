@@ -184,7 +184,7 @@ export const MessageItems = styled.ul`
 
 export const MessageItem = styled.li``;
 
-export const MessageLink = styled.a`
+export const MessageLink = styled(Link)`
   align-items: start;
   color: inherit;
   column-gap: 0.5rem;
