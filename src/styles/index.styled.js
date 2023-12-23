@@ -15,6 +15,7 @@ export const Overlay = styled.div`
 
 export const Wrapper = styled.div`
   --content-x-padding: 24px;
+  --message-line-height: 1.25em;
 
   display: grid;
   grid-template-columns: 1fr;
@@ -22,6 +23,8 @@ export const Wrapper = styled.div`
 
   @media (${breakpoints.small}) {
     --content-x-padding: 3rem;
+    --nav-height: 7.5rem;
+    --message-line-height: 1.1em;
 
     grid-template-columns: min-content 1fr;
     grid-template-rows: min-content 1fr;
@@ -29,6 +32,7 @@ export const Wrapper = styled.div`
 
   @media (${breakpoints.medium}) {
     --article-width: 50%;
+    --message-line-height: 1.07em;
   }
 
   @media (${breakpoints.large}) {
@@ -66,7 +70,8 @@ export const Header = styled.header`
   align-items: center;
   box-shadow: 0 1px 0 rgb(151 142 129/0.25);
   display: flex;
-  font-size: 0.75rem;
+  font-family: var(--font-family-sans);
+  font-size: 0.8rem;
   height: var(--header-height-small);
   justify-content: space-between;
   padding: 0 var(--content-x-padding);
@@ -112,7 +117,8 @@ export const Header = styled.header`
 export const Nav = styled.nav`
   align-items: center;
   box-shadow: 0 1px 0 rgb(151 142 129/0.25);
-  font-size: 0.75rem;
+  font-family: var(--font-family-sans);
+  font-size: 0.8rem;
   min-height:  var(--nav-height);
   padding: 18px var(--content-x-padding);
   position: sticky;
@@ -135,10 +141,6 @@ export const Nav = styled.nav`
     padding: 0 var(--content-x-padding);
     top: 0;
   }
-
-  @media (${breakpoints.small}) {
-    --nav-height: 7.5rem;
-  }
 `;
 
 export const NavItems = styled.ol`
@@ -146,11 +148,11 @@ export const NavItems = styled.ol`
   column-gap: 2rem;
   display: flex;
   flex-wrap: wrap;
-  list-style-position: inside;
-  row-gap: 6px;
-
-  @media (${breakpoints.small}) {
-    row-gap: 3px;
+  list-style-type: none;
+  
+  @media (${breakpoints.large}) {
+    list-style-position: inside;
+    list-style-type: decimal;
   }
 `;
 
@@ -163,60 +165,77 @@ export const NavItem = styled.li`
 
 export const NavLink = styled(Link)`
   color: inherit;
-  text-decoration: none;
-  text-underline-offset: 0.4em;
-  transition: color 0.8s var(--transition-easing);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.7em;
+  transition:
+    color 0.8s var(--transition-easing),
+    text-underline-offset 0.8s var(--transition-easing),
+    text-decoration-color 0.8s var(--transition-easing);
 
-  &:hover {
-    color: rgb(23 23 22);
-    text-decoration: underline;
-  }
-
+  &:hover,
   &.active {
     color: rgb(23 23 22);
-    text-decoration: underline;
+    text-decoration-color: inherit;
+    text-underline-offset: 0.4em;
   }
 `;
 
 export const Message = styled.article`
-  font-size: 4.7vw;
-  font-weight: 600;
+  font-family: var(--font-family-serif);
+  font-size: 7vw;
+  font-weight: 700;
+  letter-spacing: -0.03em;
   line-height: var(--message-line-height);
-  text-transform: uppercase;
-  transform: translate3d(-0.13em, 0, 0);
 
   @media (${breakpoints.small}) {
-    --message-line-height: 1.3em;
-    font-size: 3.8vw;
+    font-size: 6vw;
   }
 
   @media (${breakpoints.large}) {
-    font-size: 3vw;
-    font-weight: 400;
+    font-size: 6.3vw;
+  }
+
+  @media (${breakpoints.medium}) {
+    font-size: 6.5vw;
+  }
+
+  @media (${breakpoints.xLarge}) {
+    font-size: 6.5vw;
+  }
+
+  @media (${breakpoints.max}) {
+    font-size: 5.4vw;
   }
 `;
 
 export const MessageItems = styled.ul`
-  column-gap: 0.5rem;
+  column-gap: 1rem;
   display: flex;
   flex-wrap: wrap;
   list-style: none;
 
   @media (${breakpoints.small}) {
-    column-gap: 2rem;
+    column-gap: 1.4rem;
   }
 
   @media (${breakpoints.large}) {
+    column-gap: 2rem;
+  }
+
+  @media (${breakpoints.xLarge}) {
     column-gap: 3rem;
   }
 `;
 
-export const MessageItem = styled.li``;
+export const MessageItem = styled.li`
+  margin: -0.15em 0 0;
+`;
 
 export const MessageLink = styled(Link)`
   align-items: start;
   color: inherit;
-  column-gap: 0.5rem;
+  column-gap: 0.2rem;
   display: flex;
   text-decoration: none;
 `;
@@ -224,12 +243,12 @@ export const MessageLink = styled(Link)`
 export const MessageText = styled.div`
   height: var(--message-line-height);
   overflow: hidden;
+  padding-right: 0.03em;
 `;
 
 export const MessageSlide = styled.div`
   display: flex;
   flex-direction: column;
-  letter-spacing: -0.015em;
   transition: transform 0.8s var(--transition-easing);
 
   ${MessageLink}:hover & {
@@ -252,20 +271,20 @@ export const Panel = styled(Element)`
   column-gap: 1vw;
   counter-reset: footnotes;
   display: flex;
-  padding-bottom: 3rem;
+  padding-bottom: 4rem;
 
   &:last-of-type { padding-bottom: 10vh; }
 
   @media (${breakpoints.small}) {
-    padding-bottom: 4rem;
+    padding-bottom: 6rem;
   }
 
   @media (${breakpoints.medium}) {
+    padding-bottom: 8rem;
     &:last-of-type { padding-bottom: 20vh; }
   }
 
   @media (${breakpoints.large}) {
-    padding-bottom: 10rem;
     &:last-of-type { padding-bottom: 30vh; }
   }
 
@@ -276,30 +295,21 @@ export const Panel = styled(Element)`
 
 export const Article = styled.article`
   counter-reset: list;
-  font-size: 1rem;
+  font-size: 1.1rem;
   width: var(--article-width);
 
   .work {
     display: flex;
     flex-direction: column;
     list-style: none;
-    row-gap: 1em;
+    row-gap: 2rem;
 
     li {
       counter-increment: list;
 
-      &::before {
-        content: counter(list);
-        display: inline-block;
-        font-family: "Whitney Index";
-        font-weight: 700;
-        transform: translateY(0.08em);
-      }
-
       strong {
-        font-feature-settings: "smcp";
-        font-weight: 500;
-        text-transform: lowercase;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 700;
       }
     }
   }
@@ -365,23 +375,48 @@ export const Picture = styled.picture`
 `;
 
 export const ArticleHeader = styled.header`
-  margin: 1em 0;
+  margin: 0 0 0.75em;
   position: relative;
 
   h3 {
-    font-size: 1em;
-    font-weight: 600;
+    column-gap: 1ch;
+    display: flex;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.2;
     margin: 0;
-    text-transform: uppercase;
+
+    strong {
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+  }
+
+  @media (${breakpoints.small}) {
+    margin: 0 0 1em;
+    h3 { font-size: 2rem; }
+  }
+
+  @media (${breakpoints.medium}) {
+    h3 { font-size: 2rem; }
+  }
+
+  @media (${breakpoints.large}) {
+    h3 { font-size: 2.4rem; }
+  }
+
+  @media (${breakpoints.xLarge}) {
+    h3 { font-size: 2.5rem; }
   }
 `;
 
 export const Footer = styled.footer`
   border-top: solid 1px var(--color-lowlight);
   color: var(--color-lowlight);
-  font-size: 0.8rem;
-  line-height: 1.5;
-  margin-top: 2rem;
+  font-family: var(--font-family-sans);
+  font-size: 0.7rem;
+  line-height: 1.4;
+  margin-top: 1rem;
   padding-top: 1rem;
 
   ol {
@@ -393,9 +428,9 @@ export const Footer = styled.footer`
   }
 
   @media (${breakpoints.small}) {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    padding-top: 1.5rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin-top: 2rem;
   }
 `;
 
@@ -426,7 +461,7 @@ export const Photo = styled.figure`
     -4px 16px 16px hsl(0deg 0% 0% / 0.123),
     -8px 32px 32px hsl(0deg 0% 0% / 0.123);
   margin: 0;
-  max-width: 400px;
+  max-width: 500px;
   padding: 18px;
   position: relative;
   transform: rotate(-2deg);

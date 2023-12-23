@@ -39,8 +39,8 @@ const IndexPage = () => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const fontDecimal = new FontFaceObserver('Decimal');
-      const fontWhitneyIndex = new FontFaceObserver('Whitney Index');
-      Promise.all([fontDecimal.load(), fontWhitneyIndex.load()]).then(() => {
+      const fontSentinel = new FontFaceObserver('Sentinel');
+      Promise.all([fontDecimal.load(), fontSentinel.load()]).then(() => {
         setIsLoaded(true);
       });
     } else {
@@ -150,7 +150,7 @@ const IndexPage = () => {
         </Styled.Picture>
         {
           Content.map(({ anchor, content, footnotes, menu }, index) => (
-            <Styled.Panel className="element" id={anchor} name={anchor} key={anchor}>
+            <Styled.Panel as="section" className="element" id={anchor} name={anchor} key={anchor}>
               <Styled.Article>
                 <Sticky onStateChange={(status) => handleStateChange(status, anchor)} top={160} />
                 <Styled.ArticleHeader>
@@ -158,7 +158,7 @@ const IndexPage = () => {
                     <span aria-hidden="true">§</span>
                     <span className="visually-hidden">Section titled “{menu}”</span>
                   </Styled.Anchor>
-                  <h3>{index + 1}. {menu}</h3>
+                  <h3><span>{index + 1}</span> <strong>{menu}</strong></h3>
                 </Styled.ArticleHeader>
                 <div dangerouslySetInnerHTML={{ __html: content }} />
                 {

@@ -37,15 +37,74 @@ export default createGlobalStyle`
 
   @font-face {
     font-display: swap;
-    font-family: "Whitney Index";
+    font-family: Sentinel;
     font-style: normal;
     font-weight: 700;
-    src: url("/fonts/WhitneyIndWh-RdBol.woff2") format("woff2");
+    src: url("/fonts/Sentinel-Bold-Pro.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: Sentinel;
+    font-style: italic;
+    font-weight: 700;
+    src: url("/fonts/Sentinel-BoldItalic-Pro.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: Sentinel;
+    font-style: normal;
+    font-weight: 400;
+    src: url("/fonts/Sentinel-Book-Pro.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: Sentinel;
+    font-style: italic;
+    font-weight: 400;
+    src: url("/fonts/Sentinel-BookItalic-Pro.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: Sentinel;
+    font-style: normal;
+    font-weight: 500;
+    src: url("/fonts/Sentinel-Medium-Pro.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: Sentinel;
+    font-style: italic;
+    font-weight: 500;
+    src: url("/fonts/Sentinel-MediumItalic-Pro.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: Sentinel;
+    font-style: normal;
+    font-weight: 600;
+    src: url("/fonts/Sentinel-Semibold-Pro.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: Sentinel;
+    font-style: italic;
+    font-weight: 600;
+    src: url("/fonts/Sentinel-SemiboldItalic-Pro.woff2") format("woff2");
   }
 
   html {
+    /* Fonts */
+    --font-family-sans: Decimal, sans-serif;
+    --font-family-serif: Sentinel, serif;
+
     --nav-height: 5rem;
-    --message-line-height: 1.6em;
     --transition-easing: cubic-bezier(0.16, 1, 0.3, 1);
     --article-width: 100%;
 
@@ -60,10 +119,10 @@ export default createGlobalStyle`
     --header-height-large: 100vh;
 
     color: var(--color-default);
-    font-family: Decimal, sans-serif;
+    font-family: var(--font-family-serif);
     font-size: 16px;
     font-weight: 400;
-    line-height: 1.5;
+    line-height: 1.4;
     -webkit-overflow-scrolling: touch;
   }
   
@@ -144,8 +203,9 @@ export default createGlobalStyle`
   }
 
   blockquote {
-    font-size: 0.85rem;
-    margin: 2em 0;
+    font-size: 1rem;
+    line-height: 1.3;
+    margin: 1em 0;
     padding: 2rem;
     position: relative;
 
@@ -169,7 +229,7 @@ export default createGlobalStyle`
 
     p {
       margin: 0;
-      text-indent: -0.6em;
+      text-indent: -0.4em;
       & + p { text-indent: 3ch; }
     }
 
@@ -180,7 +240,7 @@ export default createGlobalStyle`
 
     @media (${breakpoints.small}) {
       font-size: 1rem;
-      margin: 3rem 0;
+      line-height: 1.4;
       padding: 4rem;
 
       &::after { inset: 1rem; }
