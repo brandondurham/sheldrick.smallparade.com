@@ -198,7 +198,7 @@ const IndexPage = () => {
 export default IndexPage;
 export const Head = () => (
   <>
-    <meta property="og:image" content="https://sheldrick.smallparade.com/social.jpg" />
+    <meta property="og:image" content="https://sheldrick.smallparade.com/social.png" />
     <meta property="og:image:width" content="2000" />
     <meta property="og:image:height" content="1265" />
     <meta property="og:title" content="Brandon Durham ❤️ Sheldrick Wildlife Trust" />
