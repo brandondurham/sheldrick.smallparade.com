@@ -71,7 +71,8 @@ export const Header = styled.header`
   box-shadow: 0 1px 0 rgb(151 142 129/0.25);
   display: flex;
   font-family: var(--font-family-sans);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 600;
   height: var(--header-height-small);
   justify-content: space-between;
   padding: 0 var(--content-x-padding);
@@ -101,6 +102,8 @@ export const Header = styled.header`
 
   @media (${breakpoints.small}) {
     box-shadow: -1px 0 0 rgb(151 142 129/0.5);
+    font-size: 0.8rem;
+    font-weight: 400;
     grid-row: 1/-1;
     height: var(--header-height-large);
     padding: 2rem 0;
@@ -110,7 +113,7 @@ export const Header = styled.header`
   }
 
   @media (${breakpoints.large}) {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 `;
 
@@ -137,7 +140,7 @@ export const Nav = styled.nav`
   @media (${breakpoints.small}) {
     box-shadow: none;
     display: flex;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     padding: 0 var(--content-x-padding);
     top: 0;
   }
@@ -150,6 +153,8 @@ export const NavItems = styled.ol`
   flex-wrap: wrap;
   list-style-type: none;
   
+  column-gap: 1.5rem;
+
   @media (${breakpoints.large}) {
     list-style-position: inside;
     list-style-type: decimal;
@@ -381,7 +386,7 @@ export const ArticleHeader = styled.header`
   h3 {
     column-gap: 1ch;
     display: flex;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: 400;
     line-height: 1.2;
     margin: 0;
