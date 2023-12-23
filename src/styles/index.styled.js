@@ -152,8 +152,6 @@ export const NavItems = styled.ol`
   display: flex;
   flex-wrap: wrap;
   list-style-type: none;
-  
-  column-gap: 1.5rem;
 
   @media (${breakpoints.large}) {
     list-style-position: inside;
@@ -307,7 +305,7 @@ export const Article = styled.article`
     display: flex;
     flex-direction: column;
     list-style: none;
-    row-gap: 2rem;
+    row-gap: 0.75em;
 
     li {
       counter-increment: list;

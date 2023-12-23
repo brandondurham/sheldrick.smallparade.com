@@ -157,7 +157,7 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
 
-    p + & { margin: 1em 0; }
+    p + & { margin: 0.75em 0; }
   }
 
   [aria-describedby="footnote-label"] {
