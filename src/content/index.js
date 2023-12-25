@@ -79,6 +79,7 @@ const Content = [
 <ul>
     <li>Email: <a href="mailto:brandon@smallparade.com">brandon@smallparade.com</a></li>
     <li>Telephone: <a href="tel:+15125274626">+1 512 527 4626</a></li>
+    <li>Resumé: <a href="/resume.pdf" download="Brandon Durham (12-24-2023)">Brandon Durham (12-24-2023)</a></li>
 </ul>
 <p>Thank you for your time and consideration. I hope to hear from you soon!</p>
 <div class="signature">

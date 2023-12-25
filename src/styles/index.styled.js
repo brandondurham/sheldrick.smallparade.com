@@ -96,7 +96,7 @@ export const Header = styled.header`
 
   h2 { display: none; }
 
-  @media (${breakpoints.small}) and (height >= 400px) {
+  @media (${breakpoints.small}) and (height >= 600px) {
     h2 { display: block; }
   }
 
@@ -132,7 +132,7 @@ export const Nav = styled.nav`
     background-color: var(--color-body-background);
     content: "";
     inset: 0;
-    opacity: 0.98;
+    opacity: 0.97;
     position: absolute;
     z-index: -1;
   }
@@ -148,10 +148,11 @@ export const Nav = styled.nav`
 
 export const NavItems = styled.ol`
   color: var(--color-lowlight);
-  column-gap: 2rem;
+  column-gap: 2ch;
   display: flex;
   flex-wrap: wrap;
-  list-style-type: none;
+  list-style-position: inside;
+  list-style-type: decimal;
 
   @media (${breakpoints.large}) {
     list-style-position: inside;
