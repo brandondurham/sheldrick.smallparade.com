@@ -1,12 +1,14 @@
+import { ORG } from '../constants';
+
 const Content = [
   {
     anchor: 'about',
     content: `<p>My name is Brandon Durham. I’ve been a <em>Software Engineer</em> and <em>Designer</em> professionally for more than 18 years. My primary focus has always been front-end development with a strong interest in its relationship to design. I’m a developer first, a designer second, and love the intersection of the two.</p>
 <p>I’ve worked my fair share of jobs for the paycheck. I almost always enjoy the work itself and have been able to convince myself that I’m fulfilled. But that has become more and more difficult to do as time goes by. It’s time for a change.</p>
 <!--<p>I’ve had an extraordinary relationship with animals throughout my life. I close my eyes and I’m 7 years old, feeding an orphaned calf every morning by bottle before catching the bus; helping rescue malnourished and abused animals from neglectful neighbors alongside my sister; wrestling with our oversized Spanish goat for fun; racing passing cargo trains on the family horse <em>Misty</em>; sharing an ice cream cone with my best friend <em>Puppy Jane</em>, a German Shepard mix with a crooked ear. I open my eyes and I’m 45, having a mature conversation with 12-year-old Chocolate Labrador <em>Junebug</em> about death; cradling <em>Thurston</em>—a 19-year-old cat that has seen more of the world than most of my family—as he passes peacefully in my arms from kidney disease. They’ve always been here, and I don’t know what I would do without them.</p>-->
-<p>When I think about the organizations I would most love to dedicate my time and capabilities to—organizations that would allow me to do what I love while simultaneously giving me the opportunity to help make a difference in a way that I most connect with—Sheldrick Wildlife Trust is the only obvious option.</p>
+<p>When I think about the organizations I would most love to dedicate my time and capabilities to—organizations that would allow me to do what I love while simultaneously giving me the opportunity to help make a difference in a way that I most connect with—<em>${ORG}</em> is the only obvious option.</p>
 <p>I have a job. By nearly all measures you could say it’s good one. But at the end of the day I’m really just helping someone make money when more than anything I want to be proud of the work I do and the positive change it helps incite.</p>
-<p>So, in an effort to be proactive and try to make that happen I’ve decide to court my dream organizations, the first of which is <em>Sheldrick Wildlife Trust</em>.</p>
+<p>So, in an effort to be proactive and try to make that happen I’ve decide to court my dream organizations, the first of which is <em>${ORG}</em>.</p>
 <p>You might be wondering <a href="#work">what kind of work I’ve done in the past</a>, or <a href="#what">what I might be able to do for you</a>. If so, read on!</p>`,
     image: 'elephant-a',
     label: 'Brandon Durham',
@@ -41,9 +43,9 @@ const Content = [
   {
     anchor: 'what',
     content: `<p>I’ve handled many different roles over the years. While with Fringe (2020–2023) I acted primarily as <em>Lead Engineer</em> managing a small team of developers, but also took on an interim role as <em>Design Director</em> and managed a team of three. With Hoefler&amp;Co (2012–2020) I acted as a <em>Full-stack Developer</em>, a <em>Designer</em>, and managed several other developers during this time. I also designed and developed a proprietary <abbr title="Customer Relationship Manager"><small>CRM</small></abbr> that is still in use to this day. While working with Adlucent (2008–2012) I acted as the sole <em>Senior Front-end Developer</em>; <em>Lead Designer</em>; and managed all of my own projects. I tackled a wide array of projects there, including redesigning and developing the company site; designing t-shirts and conference materials; and building many landing pages for clients that included <a href="#multivariate" aria-describedby="footnote-label" id="multivariate-ref">Multivariate</a> and <a href="#ab" aria-describedby="footnote-label" id="ab-ref">A/B</a> tests.</p>
-<p>All this to say I bring a good bit of experience to the table. I would love the opportunity to help manage anything web-related for Sheldrick Wildlife Trust.</p>
+<p>All this to say I bring a good bit of experience to the table. I would love the opportunity to help manage anything web-related for <em>${ORG}</em>.</p>
 <p>I’m at home with my head in the details. I consider work an ongoing education and thrive on learning new and better ways to achieve my goal: creating a positive user experience with semantic, concise, and meaningful code. Depending on the audience, that can call for a relatively traditional and accessible interface, or something more experimental and unexpected.</p>
-<p>My ultimate goal is to obtain a full-time position, but I would be more than happy to consider a consultant or contract position that is meaningful to the work of Sheldrick Wildlife Trust.</p>`,
+<p>My ultimate goal is to obtain a full-time position, but I would be more than happy to consider a consultant or contract position that is meaningful to the work of <em>${ORG}</em>.</p>`,
     footnotes: [
       {
         content: 'Multivariate testing is a technique for testing a hypothesis in which multiple variables are modified. The goal of multivariate testing is to determine which combination of variations performs the best out of all of the possible combinations.',
@@ -55,8 +57,8 @@ const Content = [
       }
     ],
     image: 'elephant-c',
-    label: 'Sheldrick Wildlife Trust.',
-    menu: 'What Can I Do For Sheldrick Wildlife Trust?',
+    label: `${ORG}.`,
+    menu: `What Can I Do For ${ORG}?`,
     section: '³',
   },
   {
@@ -75,9 +77,9 @@ const Content = [
   },
   {
     anchor: 'contact',
-    content: `<p>I would love the opportunity to talk with Sheldrick Wildlife Trust. I’m located in the US Pacific time zone but I’m happy to accomodate in the event you would like to have a phone or Zoom call.</p>
+    content: `<p>I would love the opportunity to talk with <em>${ORG}</em>. I’m located in the US Pacific time zone but I’m happy to accomodate in the event you would like to have a phone or Zoom call.</p>
 <ul>
-    <li>Email: <a href="mailto:brandon@smallparade.com">brandon@smallparade.com</a></li>
+    <li>Email: <a href="mailto:brandon@smallparade.com?subject=${ORG}">brandon@smallparade.com</a></li>
     <li>Telephone: <a href="tel:+15125274626">+1 512 527 4626</a></li>
     <li>Resumé: <a href="/resume.pdf" download="Brandon Durham (12-24-2023)">Brandon Durham (12-24-2023)</a></li>
 </ul>

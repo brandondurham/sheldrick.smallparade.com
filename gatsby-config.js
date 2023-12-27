@@ -1,10 +1,13 @@
+// Constants
+import { ORG, SUBDOMAIN } from '../constants';
+
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
 module.exports = {
   siteMetadata: {
-    title: 'sheldrick',
-    siteUrl: 'https://www.yourdomain.tld',
+    title: `Brandon Durham ❤️ ${ORG}`,
+    siteUrl: `https://${SUBDOMAIN}.smallparade.com`,
   },
   plugins: [
     'gatsby-plugin-styled-components',

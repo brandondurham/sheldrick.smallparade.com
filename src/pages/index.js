@@ -15,6 +15,9 @@ import Horizon from '../images/horizon.svg';
 import GlobalStyle from '../styles/global.styled.js';
 import * as Styled from '../styles/index.styled.js';
 
+// Constants
+import { ORG, SUBDOMAIN } from '../constants';
+
 // Hooks
 import { useBreakpoints } from '../hooks/useBreakpoints';
 
@@ -198,13 +201,13 @@ const IndexPage = () => {
 export default IndexPage;
 export const Head = () => (
   <>
-    <meta property="og:image" content="https://sheldrick.smallparade.com/social.png" />
+    <meta property="og:image" content={`https://${SUBDOMAIN}.smallparade.com/social.png`} />
     <meta property="og:image:width" content="2000" />
     <meta property="og:image:height" content="1265" />
-    <meta property="og:title" content="Brandon Durham ❤️ Sheldrick Wildlife Trust" />
+    <meta property="og:title" content={`Brandon Durham ❤️ ${ORG}`} />
     <meta property="og:description" content="Software Engineer/Designer seeks pioneering conservation organisation for meaninigful relationship." />
     <meta property="og:type" content="person" />
-    <meta property="og:url" content="https://sheldrick.smallparade.com" />
-    <title>Brandon Durham ❤️ Sheldrick Wildlife Trust</title>
+    <meta property="og:url" content={`https://${SUBDOMAIN}.smallparade.com`} />
+    <title>Brandon Durham ❤️ {ORG}</title>
   </>
 );
