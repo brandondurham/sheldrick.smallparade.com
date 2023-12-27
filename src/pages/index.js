@@ -4,11 +4,11 @@ import Vivus from 'vivus';
 import FontFaceObserver from 'fontfaceobserver';
 
 // Images
-import ElephantA from '../images/elephant_a-1.svg';
-import ElephantB from '../images/elephant_a-2.svg';
-import ElephantC from '../images/elephant_a-3.svg';
-import ElephantD from '../images/elephant_a-4.svg';
-import ElephantE from '../images/elephant_a-5.svg';
+import AnimalA from '../images/elephant_a-1.svg';
+import AnimalB from '../images/elephant_a-2.svg';
+import AnimalC from '../images/elephant_a-3.svg';
+import AnimalD from '../images/elephant_a-4.svg';
+import AnimalE from '../images/elephant_a-5.svg';
 import Horizon from '../images/horizon.svg';
 
 // Styles
@@ -144,11 +144,11 @@ const IndexPage = () => {
           </Styled.Message>
         </Styled.Landing>
         <Styled.Picture>
-          <ElephantA id="elephant-a" />
-          <ElephantB id="elephant-b" />
-          <ElephantC id="elephant-c" />
-          <ElephantD id="elephant-d" />
-          <ElephantE id="elephant-e" />
+          <AnimalA id="animal-a" />
+          <AnimalB id="animal-b" />
+          <AnimalC id="animal-c" />
+          <AnimalD id="animal-d" />
+          <AnimalE id="animal-e" />
           <Horizon id="horizon" />
         </Styled.Picture>
         {

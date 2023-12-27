@@ -42,6 +42,10 @@ export const Wrapper = styled.div`
   @media (${breakpoints.xLarge}) {
     --article-width: 33vw;
   }
+
+  @media (${breakpoints.max}) {
+    --message-line-height: 1em;
+  }
 `;
 
 export const Main = styled.main`
@@ -204,12 +208,8 @@ export const Message = styled.article`
     font-size: 6.5vw;
   }
 
-  @media (${breakpoints.xLarge}) {
-    font-size: 6.5vw;
-  }
-
   @media (${breakpoints.max}) {
-    font-size: 5.4vw;
+    font-size: 5.7vw;
   }
 `;
 
