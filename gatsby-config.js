@@ -1,5 +1,5 @@
 // Constants
-import { ORG, SUBDOMAIN } from '../constants';
+const { ORG, SUBDOMAIN } = '../constants';
 
 /**
  * @type {import('gatsby').GatsbyConfig}

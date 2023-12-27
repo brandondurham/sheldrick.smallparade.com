@@ -4,12 +4,11 @@ import Vivus from 'vivus';
 import FontFaceObserver from 'fontfaceobserver';
 
 // Images
-import ElephantA from '../images/elephant_a-1.svg';
-import ElephantB from '../images/elephant_a-2.svg';
-import ElephantC from '../images/elephant_a-3.svg';
-import ElephantD from '../images/elephant_a-4.svg';
-import ElephantE from '../images/elephant_a-5.svg';
-import Horizon from '../images/horizon.svg';
+import AnimalA from '../images/chimpanzee_1.svg';
+import AnimalB from '../images/chimpanzee_2.svg';
+import AnimalC from '../images/chimpanzee_3.svg';
+import AnimalD from '../images/chimpanzee_4.svg';
+import AnimalE from '../images/chimpanzee_5.svg';
 
 // Styles
 import GlobalStyle from '../styles/global.styled.js';
@@ -56,7 +55,6 @@ const IndexPage = () => {
     Content.forEach(({ anchor, image }) => {
       pictures.current[anchor] = new Vivus(image, animationOptions);
     });
-    pictures.current.horizon = new Vivus('horizon', animationOptions);
     if (!matches.medium) {
       Object.keys(pictures.current).forEach((picture) => {
         pictures.current[picture].play();
@@ -68,14 +66,8 @@ const IndexPage = () => {
     if (matches.medium) {
       if ([Sticky.STATUS_FIXED, Sticky.STATUS_RELEASED].includes(status.status)) {
         pictures.current[anchor] && pictures.current[anchor].play();
-        if (anchor === 'contact') {
-          pictures.current.horizon.play();
-        }
       } else if (status.status === Sticky.STATUS_ORIGINAL) {
         pictures.current[anchor] && pictures.current[anchor].play(-1);
-        if (anchor === 'contact') {
-          pictures.current.horizon.play(-1);
-        }
       }
     }
   }, [matches]);
@@ -144,12 +136,11 @@ const IndexPage = () => {
           </Styled.Message>
         </Styled.Landing>
         <Styled.Picture>
-          <ElephantA id="elephant-a" />
-          <ElephantB id="elephant-b" />
-          <ElephantC id="elephant-c" />
-          <ElephantD id="elephant-d" />
-          <ElephantE id="elephant-e" />
-          <Horizon id="horizon" />
+          <AnimalA id="animal-a" />
+          <AnimalB id="animal-b" />
+          <AnimalC id="animal-c" />
+          <AnimalD id="animal-d" />
+          <AnimalE id="animal-e" />
         </Styled.Picture>
         {
           Content.map(({ anchor, content, footnotes, menu }, index) => (

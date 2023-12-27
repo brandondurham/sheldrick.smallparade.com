@@ -10,7 +10,7 @@ const Content = [
 <p>I have a job. By nearly all measures you could say it’s good one. But at the end of the day I’m really just helping someone make money when more than anything I want to be proud of the work I do and the positive change it helps incite.</p>
 <p>So, in an effort to be proactive and try to make that happen I’ve decide to court my dream organizations, the first of which is <em>${ORG}</em>.</p>
 <p>You might be wondering <a href="#work">what kind of work I’ve done in the past</a>, or <a href="#what">what I might be able to do for you</a>. If so, read on!</p>`,
-    image: 'elephant-a',
+    image: 'animal-a',
     label: 'Brandon Durham',
     menu: 'About me',
     section: '¹',
@@ -35,7 +35,7 @@ const Content = [
     <a href="https://palaxytracks.com/" target="_blank"><strong>Palaxy Tracks.</strong></a> My first real creative outlet was music. After years of playing in other peoples’ bands I created my own. <em>Palaxy Tracks</em> was active from 1997 to 2017, releasing a total of 7 albums. This site acts as a compendium for these releases. I handled all design as well as front- and back-end development.
   </li>
 </ol>`,
-    image: 'elephant-b',
+    image: 'animal-b',
     label: 'would love to work for',
     menu: 'Examples of my work',
     section: '²',
@@ -56,7 +56,7 @@ const Content = [
         id: 'ab',
       }
     ],
-    image: 'elephant-c',
+    image: 'animal-c',
     label: `${ORG}.`,
     menu: `What Can I Do For ${ORG}?`,
     section: '³',
@@ -70,9 +70,9 @@ const Content = [
 <p>— Jonathan Hoefler</p>
 </blockquote>
 <p>If desired I can share Jonathan’s contact information for a referral along with a few other colleagues, managers, agencies, and clients I’ve worked with.</p>`,
-    image: 'elephant-d',
-    label: 'Intrigued?',
-    menu: 'Intrigued?',
+    image: 'animal-d',
+    label: 'Questions?',
+    menu: 'Questions?',
     section: '⁴',
   },
   {
@@ -89,7 +89,7 @@ const Content = [
 <span>Brandon Durham</span>
 <span>December 21, 2023</span>
 </div>`,
-    image: 'elephant-e',
+    image: 'animal-e',
     label: 'Get in touch!',
     menu: 'Contact me',
     section: '⁵',
