@@ -10,6 +10,12 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-plugin-preload-fonts',
     {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        policy: [{userAgent: '*', disallow: '/'}]
+      },
+    },
+    {
       resolve: 'gatsby-plugin-google-gtag',
       options: {
         trackingIds: ['G-HWE0FF8399'],
