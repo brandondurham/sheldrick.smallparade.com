@@ -1,7 +1,13 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Element, Link } from 'react-scroll';
 
 import { breakpoints } from './breakpoints';
+
+const fadeIn = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
+`;
+
 
 export const Overlay = styled.div`
   background-color: var(--color-body-background);
@@ -44,7 +50,7 @@ export const Wrapper = styled.div`
   }
 
   @media (${breakpoints.max}) {
-    --message-line-height: 1em;
+    --message-line-height: 1.07em;
   }
 `;
 
@@ -344,21 +350,18 @@ export const Picture = styled.picture`
     fill: none;
     position: absolute;
     stroke: var(--color-lowlight);
+    stroke-linejoin: round;
     stroke-width: 10px;
 
-    &#horizon {
-      aspect-ratio: auto;
-      inset: auto 0 15%;
-      max-width: 100%;
-      stroke-width: 11px;
-      width: 100%;
+    &#animal-full {
+      opacity: 0;
+      transition: opacity 0.8s var(--transition-easing) 100ms;
     }
   }
 
   @media (${breakpoints.small}) {
     svg {
-      stroke-width: 5px;
-      &#horizon { stroke-width: 3px; }
+      stroke-width: 3px;
     }
   }
 
@@ -373,7 +376,6 @@ export const Picture = styled.picture`
     svg {
       inset: auto 0 0 50vw;
       max-width: min(100vh, 100vw);
-      &#horizon { inset: auto 0 4%; }
     }
   }
 `;

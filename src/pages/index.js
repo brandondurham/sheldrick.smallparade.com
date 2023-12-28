@@ -4,12 +4,12 @@ import Vivus from 'vivus';
 import FontFaceObserver from 'fontfaceobserver';
 
 // Images
-import AnimalA from '../images/elephant_a-1.svg';
-import AnimalB from '../images/elephant_a-2.svg';
-import AnimalC from '../images/elephant_a-3.svg';
-import AnimalD from '../images/elephant_a-4.svg';
-import AnimalE from '../images/elephant_a-5.svg';
-import Horizon from '../images/horizon.svg';
+import AnimalA from '../images/gorilla-1.svg';
+import AnimalB from '../images/gorilla-2.svg';
+import AnimalC from '../images/gorilla-3.svg';
+import AnimalD from '../images/gorilla-4.svg';
+import AnimalE from '../images/gorilla-5.svg';
+import AnimalFull from '../images/gorilla-6.svg';
 
 // Styles
 import GlobalStyle from '../styles/global.styled.js';
@@ -33,6 +33,7 @@ const animationOptions = {
 
 const IndexPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [showFinalFrame, setShowFinalFrame] = useState(false);
   const pictures = useRef({});
 
   // Track breakpoint state.
@@ -56,7 +57,6 @@ const IndexPage = () => {
     Content.forEach(({ anchor, image }) => {
       pictures.current[anchor] = new Vivus(image, animationOptions);
     });
-    pictures.current.horizon = new Vivus('horizon', animationOptions);
     if (!matches.medium) {
       Object.keys(pictures.current).forEach((picture) => {
         pictures.current[picture].play();
@@ -69,12 +69,12 @@ const IndexPage = () => {
       if ([Sticky.STATUS_FIXED, Sticky.STATUS_RELEASED].includes(status.status)) {
         pictures.current[anchor] && pictures.current[anchor].play();
         if (anchor === 'contact') {
-          pictures.current.horizon.play();
+          setShowFinalFrame(true);
         }
       } else if (status.status === Sticky.STATUS_ORIGINAL) {
         pictures.current[anchor] && pictures.current[anchor].play(-1);
         if (anchor === 'contact') {
-          pictures.current.horizon.play(-1);
+          setShowFinalFrame(false);
         }
       }
     }
@@ -149,7 +149,7 @@ const IndexPage = () => {
           <AnimalC id="animal-c" />
           <AnimalD id="animal-d" />
           <AnimalE id="animal-e" />
-          <Horizon id="horizon" />
+          <AnimalFull id="animal-full" style={{ opacity: showFinalFrame ? 1 : 0 }}/>
         </Styled.Picture>
         {
           Content.map(({ anchor, content, footnotes, menu }, index) => (
