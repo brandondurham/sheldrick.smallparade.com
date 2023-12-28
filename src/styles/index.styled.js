@@ -191,25 +191,21 @@ export const NavLink = styled(Link)`
 
 export const Message = styled.article`
   font-family: var(--font-family-serif);
-  font-size: 7vw;
+  font-size: 5.8vw;
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: var(--message-line-height);
 
   @media (${breakpoints.small}) {
-    font-size: 6vw;
-  }
-
-  @media (${breakpoints.large}) {
-    font-size: 6.3vw;
+    font-size: 4.6vw;
   }
 
   @media (${breakpoints.medium}) {
-    font-size: 6.5vw;
+    font-size: 5.1vw;
   }
 
   @media (${breakpoints.max}) {
-    font-size: 5.7vw;
+    font-size: 5.5vw;
     letter-spacing: -0.04em;
   }
 `;
@@ -336,18 +332,9 @@ export const Article = styled.article`
 
 export const Picture = styled.picture`
   aspect-ratio: 1/1;
-  margin: 0 calc(var(--content-x-padding) * -1);
+  margin: 1rem calc(var(--content-x-padding) * -1);
   pointer-events: none;
   position: relative;
-
-  &::before {
-    background-image: linear-gradient(to right, var(--color-body-background), transparent);
-    content: "";
-    inset: 0 auto 0 calc(33vw + 17rem);
-    position: absolute;
-    width: 10vw;
-    z-index: 1;
-  }
 
   svg {
     aspect-ratio: 1/1;
@@ -355,7 +342,7 @@ export const Picture = styled.picture`
     position: absolute;
     stroke: var(--color-lowlight);
     stroke-linejoin: round;
-    stroke-width: 10px;
+    stroke-width: 3px;
   }
 
   @media (${breakpoints.small}) {
@@ -374,7 +361,15 @@ export const Picture = styled.picture`
 
     svg {
       inset: auto 0 0 calc(33vw + 17rem);
-      /* max-width: min(100vh, 100vw); */
+    }
+
+    &::before {
+      background-image: linear-gradient(to right, var(--color-body-background), transparent);
+      content: "";
+      inset: 0 auto 0 calc(33vw + 17rem);
+      position: absolute;
+      width: 10vw;
+      z-index: 1;
     }
   }
 `;
