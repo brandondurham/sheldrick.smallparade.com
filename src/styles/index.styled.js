@@ -157,6 +157,11 @@ export const NavItems = styled.ol`
   flex-wrap: wrap;
   list-style-position: inside;
   list-style-type: decimal;
+  max-width: calc(100vw - (var(--content-x-padding) * 2));
+
+  @media (${breakpoints.small}) {
+    max-width: 100%;
+  }
 
   @media (${breakpoints.large}) {
     list-style-position: inside;
@@ -191,30 +196,30 @@ export const NavLink = styled(Link)`
 
 export const Message = styled.article`
   font-family: var(--font-family-serif);
-  font-size: 7vw;
+  font-size: 8.2vw;
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: var(--message-line-height);
 
   @media (${breakpoints.small}) {
-    font-size: 6vw;
-  }
-
-  @media (${breakpoints.large}) {
-    font-size: 6.3vw;
+    font-size: 7vw;
   }
 
   @media (${breakpoints.medium}) {
-    font-size: 6.5vw;
+    font-size: 7.8vw;
+  }
+
+  @media (${breakpoints.xLarge}) {
+    font-size: 8.2vw;
   }
 
   @media (${breakpoints.max}) {
-    font-size: 5.7vw;
+    font-size: 8vw;
   }
 `;
 
 export const MessageItems = styled.ul`
-  column-gap: 1rem;
+  column-gap: 0.7rem;
   display: flex;
   flex-wrap: wrap;
   list-style: none;
@@ -248,6 +253,12 @@ export const MessageText = styled.div`
   height: var(--message-line-height);
   overflow: hidden;
   padding-right: 0.03em;
+
+  u {
+    text-decoration: underline;
+    text-underline-offset: -0.01em;
+    text-decoration-color: var(--color-lowlight);
+  }
 `;
 
 export const MessageSlide = styled.div`

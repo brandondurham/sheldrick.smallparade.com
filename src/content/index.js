@@ -1,4 +1,4 @@
-import { ORG } from '../constants';
+import { ORG, ORG_ABBR } from '../constants';
 
 const Content = [
   {
@@ -57,8 +57,8 @@ const Content = [
       }
     ],
     image: 'animal-c',
-    label: `${ORG}.`,
-    menu: `What Can I Do For ${ORG}?`,
+    label: `${ORG_ABBR}.`,
+    menu: `What Can I Do For ${ORG_ABBR}?`,
     section: '³',
   },
   {
