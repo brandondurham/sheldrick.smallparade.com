@@ -4,12 +4,11 @@ import Vivus from 'vivus';
 import FontFaceObserver from 'fontfaceobserver';
 
 // Images
-import AnimalA from '../images/elephant_a-1.svg';
-import AnimalB from '../images/elephant_a-2.svg';
-import AnimalC from '../images/elephant_a-3.svg';
-import AnimalD from '../images/elephant_a-4.svg';
-import AnimalE from '../images/elephant_a-5.svg';
-import Horizon from '../images/horizon.svg';
+import AnimalA from '../images/farm-animals-1.svg';
+import AnimalB from '../images/farm-animals-2.svg';
+import AnimalC from '../images/farm-animals-3.svg';
+import AnimalD from '../images/farm-animals-4.svg';
+import AnimalE from '../images/farm-animals-5.svg';
 
 // Styles
 import GlobalStyle from '../styles/global.styled.js';
@@ -27,7 +26,7 @@ import Content from '../content';
 // Universal animation options for the Vivus package.
 const animationOptions = {
   animTimingFunction: Vivus.EASE_OUT,
-  duration: 100,
+  duration: 200,
   start: 'manual'
 };
 
@@ -54,9 +53,9 @@ const IndexPage = () => {
   // Once this page loads let’s set up the Vivus animations for each 
   useEffect(() => {
     Content.forEach(({ anchor, image }) => {
-      pictures.current[anchor] = new Vivus(image, animationOptions);
+      if (image) pictures.current[anchor] = new Vivus(image, animationOptions);
     });
-    pictures.current.horizon = new Vivus('horizon', animationOptions);
+    // pictures.current.horizon = new Vivus('horizon', animationOptions);
     if (!matches.medium) {
       Object.keys(pictures.current).forEach((picture) => {
         pictures.current[picture].play();
@@ -68,14 +67,8 @@ const IndexPage = () => {
     if (matches.medium) {
       if ([Sticky.STATUS_FIXED, Sticky.STATUS_RELEASED].includes(status.status)) {
         pictures.current[anchor] && pictures.current[anchor].play();
-        if (anchor === 'contact') {
-          pictures.current.horizon.play();
-        }
       } else if (status.status === Sticky.STATUS_ORIGINAL) {
         pictures.current[anchor] && pictures.current[anchor].play(-1);
-        if (anchor === 'contact') {
-          pictures.current.horizon.play(-1);
-        }
       }
     }
   }, [matches]);
@@ -149,7 +142,6 @@ const IndexPage = () => {
           <AnimalC id="animal-c" />
           <AnimalD id="animal-d" />
           <AnimalE id="animal-e" />
-          <Horizon id="horizon" />
         </Styled.Picture>
         {
           Content.map(({ anchor, content, footnotes, menu }, index) => (

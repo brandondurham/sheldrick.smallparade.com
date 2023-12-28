@@ -44,7 +44,7 @@ export const Wrapper = styled.div`
   }
 
   @media (${breakpoints.max}) {
-    --message-line-height: 1em;
+    --message-line-height: 1.06em;
   }
 `;
 
@@ -210,6 +210,7 @@ export const Message = styled.article`
 
   @media (${breakpoints.max}) {
     font-size: 5.7vw;
+    letter-spacing: -0.04em;
   }
 `;
 
@@ -339,26 +340,27 @@ export const Picture = styled.picture`
   pointer-events: none;
   position: relative;
 
+  &::before {
+    background-image: linear-gradient(to right, var(--color-body-background), transparent);
+    content: "";
+    inset: 0 auto 0 calc(33vw + 17rem);
+    position: absolute;
+    width: 10vw;
+    z-index: 1;
+  }
+
   svg {
     aspect-ratio: 1/1;
     fill: none;
     position: absolute;
     stroke: var(--color-lowlight);
+    stroke-linejoin: round;
     stroke-width: 10px;
-
-    &#horizon {
-      aspect-ratio: auto;
-      inset: auto 0 15%;
-      max-width: 100%;
-      stroke-width: 11px;
-      width: 100%;
-    }
   }
 
   @media (${breakpoints.small}) {
     svg {
-      stroke-width: 5px;
-      &#horizon { stroke-width: 3px; }
+      stroke-width: 2px;
     }
   }
 
@@ -371,9 +373,8 @@ export const Picture = styled.picture`
     z-index: -1;
 
     svg {
-      inset: auto 0 0 50vw;
-      max-width: min(100vh, 100vw);
-      &#horizon { inset: auto 0 4%; }
+      inset: auto 0 0 calc(33vw + 17rem);
+      /* max-width: min(100vh, 100vw); */
     }
   }
 `;
