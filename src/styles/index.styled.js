@@ -191,25 +191,26 @@ export const NavLink = styled(Link)`
 
 export const Message = styled.article`
   font-family: var(--font-family-serif);
-  font-size: 7vw;
+  font-size: 7.3vw;
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: var(--message-line-height);
 
   @media (${breakpoints.small}) {
-    font-size: 6vw;
-  }
-
-  @media (${breakpoints.large}) {
     font-size: 6.3vw;
   }
 
   @media (${breakpoints.medium}) {
-    font-size: 6.5vw;
+    font-size: 7vw;
+  }
+
+  @media (${breakpoints.xLarge}) {
+    font-size: 7.7vw;
+    letter-spacing: -0.05em;
   }
 
   @media (${breakpoints.max}) {
-    font-size: 5.7vw;
+    font-size: 7.9vw;
   }
 `;
 
@@ -247,7 +248,7 @@ export const MessageLink = styled(Link)`
 export const MessageText = styled.div`
   height: var(--message-line-height);
   overflow: hidden;
-  padding-right: 0.03em;
+  padding-right: 0.05em;
 `;
 
 export const MessageSlide = styled.div`
@@ -335,7 +336,7 @@ export const Article = styled.article`
 
 export const Picture = styled.picture`
   aspect-ratio: 1/1;
-  margin: 0 calc(var(--content-x-padding) * -1);
+  margin: 2rem calc(var(--content-x-padding) * -1) 1rem;
   pointer-events: none;
   position: relative;
 
@@ -344,21 +345,12 @@ export const Picture = styled.picture`
     fill: none;
     position: absolute;
     stroke: var(--color-lowlight);
-    stroke-width: 10px;
-
-    &#horizon {
-      aspect-ratio: auto;
-      inset: auto 0 15%;
-      max-width: 100%;
-      stroke-width: 11px;
-      width: 100%;
-    }
+    stroke-width: 1px;
   }
 
   @media (${breakpoints.small}) {
     svg {
-      stroke-width: 5px;
-      &#horizon { stroke-width: 3px; }
+      stroke-width: 0.5px;
     }
   }
 
@@ -373,7 +365,6 @@ export const Picture = styled.picture`
     svg {
       inset: auto 0 0 50vw;
       max-width: min(100vh, 100vw);
-      &#horizon { inset: auto 0 4%; }
     }
   }
 `;
