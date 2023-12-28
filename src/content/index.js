@@ -6,7 +6,7 @@ const Content = [
     content: `<p>My name is Brandon Durham. I’ve been a <em>Software Engineer</em> and <em>Designer</em> professionally for more than 18 years. My primary focus has always been front-end development with a strong interest in its relationship to design. I’m a developer first, a designer second, and love the intersection of the two.</p>
 <p>I’ve worked my fair share of jobs for the paycheck. I almost always enjoy the work itself and have been able to convince myself that I’m fulfilled. But that has become more and more difficult to do as time goes by. It’s time for a change.</p>
 <!--<p>I’ve had an extraordinary relationship with animals throughout my life. I close my eyes and I’m 7 years old, feeding an orphaned calf every morning by bottle before catching the bus; helping rescue malnourished and abused animals from neglectful neighbors alongside my sister; wrestling with our oversized Spanish goat for fun; racing passing cargo trains on the family horse <em>Misty</em>; sharing an ice cream cone with my best friend <em>Puppy Jane</em>, a German Shepard mix with a crooked ear. I open my eyes and I’m 45, having a mature conversation with 12-year-old Chocolate Labrador <em>Junebug</em> about death; cradling <em>Thurston</em>—a 19-year-old cat that has seen more of the world than most of my family—as he passes peacefully in my arms from kidney disease. They’ve always been here, and I don’t know what I would do without them.</p>-->
-<p>When I think about the organizations I would most love to dedicate my time and capabilities to—organizations that would allow me to do what I love while simultaneously giving me the opportunity to help make a difference in a way that I most connect with—<em>${ORG}</em> is the only obvious option.</p>
+<p>When I think about the organizations I would most love to dedicate my time and capabilities to—organizations that would allow me to do what I love while simultaneously giving me the opportunity to help make a difference in a way that I most connect with—<em>${ORG}</em> is an undeniable contendor.</p>
 <p>I have a job. By nearly all measures you could say it’s good one. But at the end of the day I’m really just helping someone make money when more than anything I want to be proud of the work I do and the positive change it helps incite.</p>
 <p>So, in an effort to be proactive and try to make that happen I’ve decide to court my dream organizations, the first of which is <em>${ORG}</em>.</p>
 <p>You might be wondering <a href="#work">what kind of work I’ve done in the past</a>, or <a href="#what">what I might be able to do for you</a>. If so, read on!</p>`,
@@ -87,7 +87,7 @@ const Content = [
 <div class="signature">
 <img src="/signature.png" />
 <span>Brandon Durham</span>
-<span>December 21, 2023</span>
+<span>December 28, 2023</span>
 </div>`,
     image: 'animal-e',
     label: 'Get in touch!',
