@@ -157,6 +157,11 @@ export const NavItems = styled.ol`
   flex-wrap: wrap;
   list-style-position: inside;
   list-style-type: decimal;
+  max-width: calc(100vw - (var(--content-x-padding) * 2));
+
+  @media (${breakpoints.small}) {
+    max-width: 100%;
+  }
 
   @media (${breakpoints.large}) {
     list-style-position: inside;
@@ -332,12 +337,11 @@ export const Article = styled.article`
 
 export const Picture = styled.picture`
   aspect-ratio: 1/1;
-  margin: 1rem calc(var(--content-x-padding) * -1);
+  margin: 2rem calc(var(--content-x-padding) * -1);
   pointer-events: none;
   position: relative;
 
   svg {
-    aspect-ratio: 1/1;
     fill: none;
     position: absolute;
     stroke: var(--color-lowlight);
@@ -345,10 +349,22 @@ export const Picture = styled.picture`
     stroke-width: 3px;
   }
 
-  @media (${breakpoints.small}) {
-    svg {
-      stroke-width: 2px;
-    }
+  &::before {
+    background-image: linear-gradient(to bottom, var(--color-body-background), transparent);
+    content: "";
+    height: 10vh;
+    inset: 0 0 auto;
+    position: absolute;
+    z-index: 1;
+  }
+
+  &::after {
+    background-image: linear-gradient(to top, var(--color-body-background), transparent);
+    content: "";
+    height: 10vh;
+    inset: auto 0 0;
+    position: absolute;
+    z-index: 1;
   }
 
   @media (${breakpoints.medium}) {
@@ -360,17 +376,30 @@ export const Picture = styled.picture`
     z-index: -1;
 
     svg {
-      inset: auto 0 0 calc(33vw + 17rem);
+      aspect-ratio: auto;
+      height: 100vh;
+      inset: 0 0 0 calc(var(--article-width) + (var(--content-x-padding) * 2));
+      stroke-width: 2px;
     }
 
     &::before {
       background-image: linear-gradient(to right, var(--color-body-background), transparent);
-      content: "";
-      inset: 0 auto 0 calc(33vw + 17rem);
-      position: absolute;
+      height: auto;
+      inset: 0 auto 0 calc(var(--article-width) + (var(--content-x-padding) * 2));
       width: 10vw;
-      z-index: 1;
     }
+
+    &::after { display: none; }
+  }
+
+  @media (${breakpoints.large}) {
+    svg { inset: auto 0 0 calc(var(--article-width) + var(--content-x-padding)); }
+    &::before { inset: 0 auto 0 calc(var(--article-width) + var(--content-x-padding)); }
+  }
+
+  @media (${breakpoints.xLarge}) {
+    svg { inset: auto 0 0 calc(var(--article-width) + 17rem); }
+    &::before { inset: 0 auto 0 calc(var(--article-width) + 17rem); }
   }
 `;
 

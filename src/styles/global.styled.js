@@ -208,6 +208,7 @@ export default createGlobalStyle`
     margin: 1em 0;
     padding: 2rem;
     position: relative;
+    z-index: 1;
 
     &::before,
     &::after {
