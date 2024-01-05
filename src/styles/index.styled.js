@@ -395,7 +395,8 @@ export const Anchor = styled.a`
 `;
 
 export const Photo = styled.figure`
-  margin: 0;
+  margin: 0 auto ;
+  max-width: 800px;
 
   img {
     clip-path: url(#svgClip);
