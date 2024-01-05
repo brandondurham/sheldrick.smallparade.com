@@ -244,9 +244,16 @@ const IndexPage = () => {
                 <div dangerouslySetInnerHTML={{ __html: content }} />
                 {
                   anchor === 'contact' && (
-                    <Styled.Photo>
-                      <img alt="Photography of Brandon Durham" src="/brandon-durham.jpg" />
-                    </Styled.Photo>
+                    <>
+                      <svg width="0" height="0">
+                        <clipPath id="svgClip" clipPathUnits="objectBoundingBox">
+                          <path d="M0.622,0.852 C0.686,1.049,0.314,1.049,0.378,0.852 C0.119,1,-0.05,0.883,0.151,0.613 C-0.041,0.667,-0.041,0.333,0.151,0.387 C-0.05,0.117,0.119,-0.049,0.392,0.148 C0.314,-0.049,0.686,-0.049,0.622,0.148 C0.895,-0.049,1,0.117,0.863,0.387 C1.035,0.333,1.05,0.647,0.863,0.613 C1,0.883,0.895,1,0.622,0.852" />
+                        </clipPath>
+                      </svg>
+                      <Styled.Photo>
+                        <img alt="Photography of Brandon Durham" src="/brandon-durham.jpg" />
+                      </Styled.Photo>
+                    </>
                   )
                 }
               </Styled.Article>

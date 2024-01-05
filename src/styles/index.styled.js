@@ -395,27 +395,12 @@ export const Anchor = styled.a`
 `;
 
 export const Photo = styled.figure`
-  border-radius: 200px;
-  border-bottom-right-radius: 3px;
   margin: 0;
-  max-width: 400px;
-  overflow: hidden;
-  position: relative;
-  transform: translate3d(0, 0, 0);
-  
-  &::after {
-    border-radius: inherit;
-    border-bottom-right-radius: inherit;
-    box-shadow:
-      inset 0 0 24px rgb(0 0 0/0.7),
-      inset 0 0 18px rgb(0 0 0/0.1);
-    content: "";
-    inset: 0;
-    position: absolute;
-  }
 
   img {
+    clip-path: url(#svgClip);
     display: block;
+    height: 100%;
     width: 100%;
   }
 `;
