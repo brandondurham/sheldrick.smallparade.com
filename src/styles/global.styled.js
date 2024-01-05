@@ -109,17 +109,14 @@ export default createGlobalStyle`
     --article-width: 100%;
 
     /* Colors */
-    --color-body-background: rgb(215 210 202);
+    --color-body-background: rgb(255 217 49);
     --color-default: rgb(23 23 22);
-    --color-highlight: rgb(211 141 44);
-    --color-lowlight: rgb(151 142 129);
-
-    /* Header */
-    --header-height-small: 54px;
-    --header-height-large: 100vh;
+    --color-highlight: rgb(224 60 23);
+    --color-lowlight: rgb(35 31 32/0.5);
 
     color: var(--color-default);
     font-family: var(--font-family-serif);
+    font-feature-settings: "tnum";
     font-size: 16px;
     font-weight: 400;
     line-height: 1.4;
@@ -141,8 +138,10 @@ export default createGlobalStyle`
 
   a {
     color: var(--color-lowlight);
-    text-decoration-color: rgb(151 142 129/0.75);
+    color: inherit;
+    text-decoration-color: rgb(0 0 0/0.25);
     text-underline-offset: 0.3em;
+    text-decoration-thickness: 2px;
     transition:
       color 0.8s var(--transition-easing),
       text-decoration-color 0.8s var(--transition-easing);
@@ -203,29 +202,16 @@ export default createGlobalStyle`
   }
 
   blockquote {
+    background-color: var(--color-default);
+    box-shadow: inset 0 0 0 var(--moat) black;
+    color: white;
     font-size: 1rem;
+    -webkit-font-smoothing: antialiased;
     line-height: 1.3;
     margin: 1em 0;
     padding: 2rem;
     position: relative;
-
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-    }
-
-    &::before {
-      background-image: linear-gradient(to bottom right, #d38d2c, #5d74ca);
-      inset: 0;
-      z-index: -2;
-    }
-
-    &::after {
-      background-color: var(--color-body-background);
-      inset: 0.5rem;
-      z-index: -1;
-    }
+    transform: rotate(-1deg);
 
     p {
       margin: 0;
@@ -242,13 +228,10 @@ export default createGlobalStyle`
       font-size: 1rem;
       line-height: 1.4;
       padding: 4rem;
-
-      &::after { inset: 1rem; }
     }
 
     @media (${breakpoints.large}) {
       font-size: 1.3rem;
-
       p + p { text-indent: 6ch; }
     }
   }
@@ -268,11 +251,5 @@ export default createGlobalStyle`
     @media (${breakpoints.small}) {
       img { width: 300px; }
     }
-  }
-
-  svg {
-    fill: transparent;
-    stroke: var(--color-lowlight);
-    stroke-width: 2px;
   }
 `;

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Element, Link } from 'react-scroll';
 
 import { breakpoints } from './breakpoints';
@@ -15,7 +15,7 @@ export const Overlay = styled.div`
 
 export const Wrapper = styled.div`
   --content-x-padding: 24px;
-  --message-line-height: 1.25em;
+  --message-line-height: 1.2em;
 
   display: grid;
   grid-template-columns: 1fr;
@@ -24,7 +24,7 @@ export const Wrapper = styled.div`
   @media (${breakpoints.small}) {
     --content-x-padding: 3rem;
     --nav-height: 7.5rem;
-    --message-line-height: 1.1em;
+    --message-line-height: 1em;
 
     grid-template-columns: min-content 1fr;
     grid-template-rows: min-content 1fr;
@@ -32,19 +32,16 @@ export const Wrapper = styled.div`
 
   @media (${breakpoints.medium}) {
     --article-width: 50%;
-    --message-line-height: 1.07em;
   }
 
   @media (${breakpoints.large}) {
     --content-x-padding: 6rem;
+    --message-line-height: 0.97em;
   }
 
   @media (${breakpoints.xLarge}) {
     --article-width: 33vw;
-  }
-
-  @media (${breakpoints.max}) {
-    --message-line-height: 1em;
+    --message-line-height: 0.95em;
   }
 `;
 
@@ -52,6 +49,7 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   padding: 0 var(--content-x-padding);
+  text-wrap: pretty;
   z-index: 1;
 `;
 
@@ -71,27 +69,20 @@ export const Landing = styled.section`
 `;
 
 export const Header = styled.header`
+  --header-height: 54px;
+
   align-items: center;
   box-shadow: 0 1px 0 rgb(151 142 129/0.25);
   display: flex;
   font-family: var(--font-family-sans);
   font-size: 0.75rem;
   font-weight: 600;
-  height: var(--header-height-small);
+  height: var(--header-height);
   justify-content: space-between;
   padding: 0 var(--content-x-padding);
   position: sticky;
   top: 0;
   z-index: 3;
-
-  &::before {
-    background-color: var(--color-body-background);
-    content: "";
-    inset: 0;
-    opacity: 0.98;
-    position: absolute;
-    z-index: -1;
-  }
 
   * {
     font: inherit;
@@ -105,11 +96,11 @@ export const Header = styled.header`
   }
 
   @media (${breakpoints.small}) {
+    --header-height: 100vh;
     box-shadow: -1px 0 0 rgb(151 142 129/0.5);
     font-size: 0.8rem;
     font-weight: 400;
     grid-row: 1/-1;
-    height: var(--header-height-large);
     padding: 2rem 0;
     transform: scale(-1);
     width: 5rem;
@@ -131,13 +122,14 @@ export const Nav = styled.nav`
   position: sticky;
   top: var(--header-height-small);
   z-index: 2;
-
+  
   &::before {
     background-color: var(--color-body-background);
     content: "";
     inset: 0;
-    opacity: 0.97;
+    opacity: ${({$isScrolledToContent}) => $isScrolledToContent ? 0.95 : 0};
     position: absolute;
+    transition: opacity 0.8s var(--transition-easing);
     z-index: -1;
   }
 
@@ -191,25 +183,25 @@ export const NavLink = styled(Link)`
 
 export const Message = styled.article`
   font-family: var(--font-family-serif);
-  font-size: 7vw;
+  font-size: 8vw;
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: var(--message-line-height);
 
   @media (${breakpoints.small}) {
-    font-size: 6vw;
-  }
-
-  @media (${breakpoints.large}) {
-    font-size: 6.3vw;
+    font-size: 7vw;
   }
 
   @media (${breakpoints.medium}) {
-    font-size: 6.5vw;
+    font-size: 7.5vw;
+  }
+
+  @media (${breakpoints.xLarge}) {
+    font-size: 8vw;
   }
 
   @media (${breakpoints.max}) {
-    font-size: 5.7vw;
+    font-size: 8.4vw;
   }
 `;
 
@@ -247,7 +239,7 @@ export const MessageLink = styled(Link)`
 export const MessageText = styled.div`
   height: var(--message-line-height);
   overflow: hidden;
-  padding-right: 0.03em;
+  padding-right: 0.046em;
 `;
 
 export const MessageSlide = styled.div`
@@ -271,13 +263,10 @@ export const Asterisk = styled.span`
 `;
 
 export const Panel = styled(Element)`
-  align-items: start;
-  column-gap: 1vw;
   counter-reset: footnotes;
-  display: flex;
   padding-bottom: 4rem;
 
-  &:last-of-type { padding-bottom: 10vh; }
+  &:last-of-type { padding-bottom: 8rem; }
 
   @media (${breakpoints.small}) {
     padding-bottom: 6rem;
@@ -285,15 +274,7 @@ export const Panel = styled(Element)`
 
   @media (${breakpoints.medium}) {
     padding-bottom: 8rem;
-    &:last-of-type { padding-bottom: 20vh; }
-  }
-
-  @media (${breakpoints.large}) {
-    &:last-of-type { padding-bottom: 30vh; }
-  }
-
-  @media (${breakpoints.xLarge}) {
-    &:last-of-type { padding-bottom: 40vh; }
+    &:last-of-type { padding-bottom: 16rem; }
   }
 `;
 
@@ -313,6 +294,7 @@ export const Article = styled.article`
 
       strong {
         -webkit-font-smoothing: antialiased;
+        font-feature-settings: "smcp";
         font-weight: 700;
       }
     }
@@ -333,51 +315,6 @@ export const Article = styled.article`
   }
 `;
 
-export const Picture = styled.picture`
-  aspect-ratio: 1/1;
-  margin: 0 calc(var(--content-x-padding) * -1);
-  pointer-events: none;
-  position: relative;
-
-  svg {
-    aspect-ratio: 1/1;
-    fill: none;
-    position: absolute;
-    stroke: var(--color-lowlight);
-    stroke-width: 10px;
-
-    &#horizon {
-      aspect-ratio: auto;
-      inset: auto 0 15%;
-      max-width: 100%;
-      stroke-width: 11px;
-      width: 100%;
-    }
-  }
-
-  @media (${breakpoints.small}) {
-    svg {
-      stroke-width: 5px;
-      &#horizon { stroke-width: 3px; }
-    }
-  }
-
-  @media (${breakpoints.medium}) {
-    aspect-ratio: auto;
-    inset: 0;
-    margin: 0;
-    pointer-events: none;
-    position: fixed;
-    z-index: -1;
-
-    svg {
-      inset: auto 0 0 50vw;
-      max-width: min(100vh, 100vw);
-      &#horizon { inset: auto 0 4%; }
-    }
-  }
-`;
-
 export const ArticleHeader = styled.header`
   margin: 0 0 0.75em;
   position: relative;
@@ -393,6 +330,7 @@ export const ArticleHeader = styled.header`
     strong {
       font-weight: 700;
       letter-spacing: -0.03em;
+      text-wrap: pretty;
     }
   }
 
@@ -457,39 +395,89 @@ export const Anchor = styled.a`
 `;
 
 export const Photo = styled.figure`
-  background-color: rgb(23 23 23);
-  box-shadow:
-    0 2px 2px hsl(0deg 0% 0% / 0.123),
-    -1px 4px 4px hsl(0deg 0% 0% / 0.123),
-    -2px 8px 8px hsl(0deg 0% 0% / 0.123),
-    -4px 16px 16px hsl(0deg 0% 0% / 0.123),
-    -8px 32px 32px hsl(0deg 0% 0% / 0.123);
+  border-radius: 200px;
+  border-bottom-right-radius: 0;
   margin: 0;
-  max-width: 500px;
-  padding: 18px;
-  position: relative;
-  transform: rotate(-2deg);
+  max-width: 400px;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
 
   img {
     display: block;
     width: 100%;
   }
+`;
 
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-    }
+export const Letters = styled.div`
+  inset: 0;
+  position: fixed;
 
-    &::before {
-      background-image: linear-gradient(to bottom right, #d38d2c, #5d74ca);
-      inset: 0;
-      z-index: -2;
-    }
+  svg {
+    stroke: rgb(0 0 0/0.2);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+`;
 
-    &::after {
-      background-color: var(--color-body-background);
-      inset: 18px;
-      z-index: -1;
-    }
+export const StaticRestingContainer = styled.div`
+  margin: 0 calc(var(--content-x-padding) * -1);
+  overflow: hidden;
+  padding: 2rem 0 3rem;
+`;
+
+export const Resting = styled.div`
+  ${({ $static }) => !$static ? css`
+    inset: 0;
+    position: absolute;
+  ` : css`
+    height: 100vh;
+    position: relative;
+  `}
+
+  & > div {
+    height: 0;
+    position: relative;
+    width: 0;
+    will-change: transform;
+  }
+
+  svg {
+    fill: transparent;
+    height: 240px;
+    inset: -120px auto auto -120px;
+    position: absolute;
+    width: 240px;
+
+    ${({ $static }) => $static && css`
+      stroke: rgb(0 0 0/0.3);
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    `}
+  }
+`;
+
+export const Lockup = styled.div`
+  left: 75vw;
+  position: absolute;
+  top: 50vh;
+
+  & div {
+    height: 0;
+    inset: 0 auto auto 0;
+    position: absolute;
+    width: 0;
+  }
+
+  & svg {
+    fill: var(--color-default);
+    stroke: transparent;
+    transform: translate3d(-50%, -50%, 0);
+  }
+`;
+
+export const BreakpointReporter = styled.div`
+  inset: auto 0 0 auto;
+  padding: 12px;
+  position: fixed;
+  z-index: 100;
 `;

@@ -1,42 +1,34 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import Sticky from 'react-stickynode';
-import Vivus from 'vivus';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import FontFaceObserver from 'fontfaceobserver';
-
-// Images
-import AnimalA from '../images/elephant_a-1.svg';
-import AnimalB from '../images/elephant_a-2.svg';
-import AnimalC from '../images/elephant_a-3.svg';
-import AnimalD from '../images/elephant_a-4.svg';
-import AnimalE from '../images/elephant_a-5.svg';
-import Horizon from '../images/horizon.svg';
-
-// Styles
-import GlobalStyle from '../styles/global.styled.js';
-import * as Styled from '../styles/index.styled.js';
-
-// Constants
-import { ORG, SUBDOMAIN } from '../constants';
+import { motion } from 'framer-motion';
+import Sticky from 'react-stickynode';
 
 // Hooks
 import { useBreakpoints } from '../hooks/useBreakpoints';
 
+// Styles
+import GlobalStyle from '../styles/global.styled';
+import * as Styled from '../styles/index.styled';
+
+// Constants
+import { ORG, SUBDOMAIN } from '../constants';
+
 // Content
 import Content from '../content';
-
-// Universal animation options for the Vivus package.
-const animationOptions = {
-  animTimingFunction: Vivus.EASE_OUT,
-  duration: 100,
-  start: 'manual'
-};
+import { Letters } from '../content/letters';
+import { Backdrop } from '../content/backdrop';
 
 const IndexPage = () => {
+  const [isScrolledToContent, setIsScrolledToContent] = useState(false);
+  const [scrollPercent, setScrollPercent] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
-  const pictures = useRef({});
 
-  // Track breakpoint state.
-  const { matches } = useBreakpoints();
+  const { current, matches } = useBreakpoints();
 
   // Fonts
   useEffect(() => {
@@ -51,44 +43,100 @@ const IndexPage = () => {
     }
   }, []);
 
-  // Once this page loads let’s set up the Vivus animations for each 
-  useEffect(() => {
-    Content.forEach(({ anchor, image }) => {
-      pictures.current[anchor] = new Vivus(image, animationOptions);
-    });
-    pictures.current.horizon = new Vivus('horizon', animationOptions);
-    if (!matches.medium) {
-      Object.keys(pictures.current).forEach((picture) => {
-        pictures.current[picture].play();
-      });
-    }
-  }, [matches]);
+  const getScrollPercent = useCallback(() => {
+    const h = document.documentElement;
+    const b = document.body;
+    const st = 'scrollTop';
+    const sh = 'scrollHeight';
 
-  const handleStateChange = useCallback((status, anchor) => {
-    if (matches.medium) {
-      if ([Sticky.STATUS_FIXED, Sticky.STATUS_RELEASED].includes(status.status)) {
-        pictures.current[anchor] && pictures.current[anchor].play();
-        if (anchor === 'contact') {
-          pictures.current.horizon.play();
-        }
-      } else if (status.status === Sticky.STATUS_ORIGINAL) {
-        pictures.current[anchor] && pictures.current[anchor].play(-1);
-        if (anchor === 'contact') {
-          pictures.current.horizon.play(-1);
-        }
-      }
+    const scrollPercent = Math.round(((h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight)) * 100);
+    setScrollPercent(isNaN(scrollPercent) ? -1 : scrollPercent);
+  }, []);
+
+  useEffect(() => {
+    if (window) window.addEventListener('scroll', getScrollPercent);
+    return () => {
+      if (window) window.removeEventListener('scroll', getScrollPercent);
+    };
+  }, [getScrollPercent]);
+
+  const letterCollection = useMemo(() => Letters({ breakpoint: current }), [current]);
+  const numLetters = letterCollection.length;
+
+  const handleStateChange = useCallback((status) => {
+    if (matches.small) {
+      setIsScrolledToContent(status.status === Sticky.STATUS_FIXED);
     }
   }, [matches]);
 
   return (
     <Styled.Wrapper>
       <GlobalStyle />
+      {
+        matches?.medium && (
+          <Styled.Letters>
+            <Styled.Resting>
+              {
+                Backdrop.map(({ end, path }, index) => (
+                  <motion.div
+                    animate={end}
+                    initial={{
+                      scale: 0,
+                      x: '50vw',
+                      y: '50vh',
+                    }}
+                    key={`${index}-${path}`}
+                    transition={{
+                      damping: 8,
+                      delay: index * 0.01,
+                      stiffness: 120,
+                      type: 'spring',
+                    }}
+                  >
+                    <svg viewBox="0 0 240 240">
+                      <path
+                        d={path}
+                        vectorEffect="non-scaling-stroke"
+                      />
+                    </svg>
+                  </motion.div>
+                ))
+              }
+            </Styled.Resting>
+            <Styled.Lockup>
+              {
+                letterCollection.map(({ end, height, path, start, width }, index) => {
+                  const waypoint = 10 + ((index + 1) * (90 / numLetters));
+                  return (
+                    <motion.div
+                      animate={scrollPercent >= waypoint ? end : start}
+                      initial={start}
+                      key={`${index}-${path}`}
+                      transition={end.transition}
+                    >
+                      <svg
+                        style={{
+                          height: height ? `${height}px` : '240px',
+                          width: width ? `${width}px` : '240px',
+                        }}
+                        viewBox={`0 0 ${width || 240} ${height || 240}`}
+                      >
+                        <path d={path} vectorEffect="non-scaling-stroke"/>
+                      </svg>
+                    </motion.div>
+                  );
+                })
+              }
+            </Styled.Lockup>
+          </Styled.Letters>
+        )
+      }
       <Styled.Overlay $isLoaded={isLoaded} />
       <Styled.Header>
         <h1><span aria-hidden>●</span> Brandon Durham, Web Developer/Designer</h1>
         <h2><span aria-hidden>●</span> 18+ years experience</h2>
       </Styled.Header>
-      <Styled.Nav id="navigation">
+      <Styled.Nav id="navigation" $isScrolledToContent={isScrolledToContent}>
         <Styled.NavItems>
           {
             Content.map(({ anchor, menu }) => (
@@ -143,19 +191,49 @@ const IndexPage = () => {
             </Styled.MessageItems>
           </Styled.Message>
         </Styled.Landing>
-        <Styled.Picture>
-          <AnimalA id="animal-a" />
-          <AnimalB id="animal-b" />
-          <AnimalC id="animal-c" />
-          <AnimalD id="animal-d" />
-          <AnimalE id="animal-e" />
-          <Horizon id="horizon" />
-        </Styled.Picture>
         {
-          Content.map(({ anchor, content, footnotes, menu }, index) => (
+          !matches?.medium && (
+            <Styled.StaticRestingContainer>
+              <Styled.Resting $static>
+                {
+                  Backdrop.map(({ end, path }, index) => (
+                    <motion.div
+                      animate={end}
+                      initial={{
+                        scale: 0,
+                        x: '50vw',
+                        y: '50vh',
+                      }}
+                      key={`${index}-${path}`}
+                      transition={{
+                        damping: 8,
+                        delay: index * 0.01,
+                        stiffness: 120,
+                        type: 'spring',
+                      }}
+                    >
+                      <svg viewBox="0 0 240 240">
+                        <path
+                          d={path}
+                          vectorEffect="non-scaling-stroke"
+                        />
+                      </svg>
+                    </motion.div>
+                  ))
+                }
+              </Styled.Resting>
+            </Styled.StaticRestingContainer>
+          )
+        }
+        {
+          Content.map(({ anchor, content, menu }, index) => (
             <Styled.Panel as="section" className="element" id={anchor} name={anchor} key={anchor}>
+              {
+                anchor === 'about' && (
+                  <Sticky onStateChange={handleStateChange} top={120} />
+                )
+              }
               <Styled.Article>
-                <Sticky onStateChange={(status) => handleStateChange(status, anchor)} top={160} />
                 <Styled.ArticleHeader>
                   <Styled.Anchor href={`#${anchor}`}>
                     <span aria-hidden="true">§</span>
@@ -164,24 +242,6 @@ const IndexPage = () => {
                   <h3><span>{index + 1}</span> <strong>{menu}</strong></h3>
                 </Styled.ArticleHeader>
                 <div dangerouslySetInnerHTML={{ __html: content }} />
-                {
-                  footnotes && footnotes.length > 0 && (
-                    <Styled.Footer>
-                      <h4 className="visually-hidden" id="footnote-label">Footnotes</h4>
-                      <ol>
-                        {
-                          footnotes.map(({ content, id }) => (
-                            <li key={id} id={id}>
-                              {content}
-                              {' '}
-                              <a href={`#${id}-ref`} aria-label="Back to content">⎌</a>
-                            </li>
-                          ))
-                        }
-                      </ol>
-                    </Styled.Footer>
-                  )
-                }
                 {
                   anchor === 'contact' && (
                     <Styled.Photo>
@@ -194,6 +254,9 @@ const IndexPage = () => {
           ))
         }
       </Styled.Main>
+      {/* <Styled.BreakpointReporter>
+        {current}
+      </Styled.BreakpointReporter> */}
     </Styled.Wrapper>
   )
 }
@@ -205,7 +268,7 @@ export const Head = () => (
     <meta property="og:image:width" content="2000" />
     <meta property="og:image:height" content="1265" />
     <meta property="og:title" content={`Brandon Durham ❤️ ${ORG}`} />
-    <meta property="og:description" content="Software Engineer/Designer seeks pioneering conservation organisation for meaninigful relationship." />
+    <meta property="og:description" content="Software Engineer/Designer seeks pioneering organization for meaninigful relationship." />
     <meta property="og:type" content="person" />
     <meta property="og:url" content={`https://${SUBDOMAIN}.smallparade.com`} />
     <title>Brandon Durham ❤️ {ORG}</title>
