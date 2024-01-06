@@ -37,13 +37,11 @@ export const Wrapper = styled.div`
 
   @media (${breakpoints.large}) {
     --content-x-padding: 6rem;
+    --message-line-height: 1.03em;
   }
 
   @media (${breakpoints.xLarge}) {
     --article-width: 33vw;
-  }
-
-  @media (${breakpoints.max}) {
     --message-line-height: 1em;
   }
 `;
@@ -191,25 +189,29 @@ export const NavLink = styled(Link)`
 
 export const Message = styled.article`
   font-family: var(--font-family-serif);
-  font-size: 7vw;
+  font-size: 7.5vw;
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: var(--message-line-height);
 
   @media (${breakpoints.small}) {
-    font-size: 6vw;
-  }
-
-  @media (${breakpoints.large}) {
-    font-size: 6.3vw;
-  }
-
-  @media (${breakpoints.medium}) {
     font-size: 6.5vw;
   }
 
+  @media (${breakpoints.medium}) {
+    font-size: 7.5vw;
+  }
+
+  @media (${breakpoints.large}) {
+    font-size: 7.3vw;
+  }
+
+  @media (${breakpoints.xLarge}) {
+    font-size: 7.5vw;
+  }
+
   @media (${breakpoints.max}) {
-    font-size: 5.7vw;
+    font-size: 8vw;
   }
 `;
 
@@ -312,6 +314,7 @@ export const Article = styled.article`
       counter-increment: list;
 
       strong {
+        font-feature-settings: "smcp";
         -webkit-font-smoothing: antialiased;
         font-weight: 700;
       }

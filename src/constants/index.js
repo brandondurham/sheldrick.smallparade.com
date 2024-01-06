@@ -1,2 +1,2 @@
-export const ORG = 'Sheldrick Wildlife Trust';
-export const SUBDOMAIN = 'sheldrick';
+export const ORG = 'Friends of Animals';
+export const SUBDOMAIN = 'friendsofanimals';

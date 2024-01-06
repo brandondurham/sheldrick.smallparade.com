@@ -140,15 +140,15 @@ export default createGlobalStyle`
   }
 
   a {
-    color: var(--color-lowlight);
-    text-decoration-color: rgb(151 142 129/0.75);
+    color: inherit;
+    text-decoration-color: rgb(0 0 0/0.3);
     text-underline-offset: 0.3em;
+    text-decoration-thickness: 2px;
     transition:
       color 0.8s var(--transition-easing),
       text-decoration-color 0.8s var(--transition-easing);
 
     &:hover {
-      color: var(--color-default);
       text-decoration-color: inherit;
     }
   }

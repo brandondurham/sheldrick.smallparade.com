@@ -71,8 +71,8 @@ const Content = [
 </blockquote>
 <p>If desired I can share Jonathan’s contact information for a referral along with a few other colleagues, managers, agencies, and clients I’ve worked with.</p>`,
     image: 'animal-d',
-    label: 'Questions?',
-    menu: 'Questions?',
+    label: 'Curious?',
+    menu: 'Curious?',
     section: '⁴',
   },
   {
